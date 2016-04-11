@@ -297,7 +297,10 @@
               }
             }
 
-            particle.element.style.transform = 'translate(' + particle.position.x + 'px, ' + particle.position.y + 'px)';
+            var transform = 'translate(' + particle.position.x + 'px, ' + particle.position.y + 'px)';
+
+            particle.element.style.transform = transform;
+            particle.element.style.WebkitTransform = transform;
           }
         }
       }
