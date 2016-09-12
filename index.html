@@ -61,7 +61,7 @@
         line-height: 1.385;
         font-weight: 400;
         margin: 0;
-        padding: 0 1em 5em 1em;
+        padding: 0 1em 0 1em;
         position: relative;
         font-variant-numeric: oldstyle-nums;
         -moz-font-feature-settings: "onum";
@@ -81,13 +81,32 @@
         margin-top: 0
       }
 
-      .info, header {
-        max-width: 18em;
+      .container {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
       }
 
-      .info {
-        /*padding-bottom: 5em;*/
-        position: relative;
+      .content, .meta, .mark {
+        flex-grow: 0;
+      }
+
+      .content {
+        max-width: 18em;
+        flex-grow: 1;
+      }
+
+      .meta {
+        min-width: 8.5em;
+      }
+
+      .mark {
+        margin-top: 1.848em;
+        margin-bottom: 1.5em;
+      }
+
+      #logo {
+        width: 1em;
       }
 
       header {
@@ -108,28 +127,8 @@
         border-color: #57727D;
       }
 
-      ul {
-        list-style-type: none;
-        margin-left: 0;
-        padding-left: 0;
-      }
-
-      li {
-        margin-top: 0.2em;
-      }
-
-      li span {
-        white-space: nowrap;
-      }
-
-      .mark {
-        position: fixed;
-        bottom: 1.5em;
-        left: 1em;
-      }
-
-      #logo {
-        width: 1em;
+      a:active {
+        color: #3E5159;
       }
 
       @media screen and (min-width: 570px) {
@@ -156,51 +155,42 @@
   </head>
 
   <body>
-    <header>
-      <h1>internetfriendsforever</h1>
-    </header>
+    <div class="container">
 
-    <article class="info">
-      <p>a collective of freelancers focusing on research and communication through interactive media</p>
-      <p>
-        we are <a href="http://danielmahal.com">daniel mahal</a> <br>and <a href="http://s-g-k.org">sebastian gorton kalvik</a>
+      <article class="content">
+        <header>
+          <h1>internetfriendsforever</h1>
+        </header>
+
+        <p>a collective of freelancers focusing on research and communication through interactive media</p>
+        <p>
+          we are <a href="http://danielmahal.com">daniel mahal</a> <br />and  <a href="http://s-g-k.org">sebastian gorton kalvik</a>
+        </p>
+        <p>we make websites, systems, processes, products and services that are delightful to use, efficient and fast, and that work across devices and networks</p>
+
+        <p class="emails">
+          if you’re interested in working with us, send an email to
+          <a href="mailto:anyone@internetfriendsforever.com">anyone@internetfriendsforever.com</a> <br />
+        </p>
+
+        <p>
+          or <a href="https://www.google.no/maps/place/Nordre+gate+20,+0551+Oslo/@59.9211304,10.7560383,17z/data=!3m1!4b1!4m5!3m4!1s0x46416e6645dd6fad:0xb901ba2a27cb4691!8m2!3d59.9211304!4d10.7582323?hl=en">visit us in person here</a>
+        </p>
+      </article>
+
+      <aside class="meta">
+        <p>
+          Nordre gate 20–22<br />
+          Oslo, Norway
+        </p>
+      </aside>
+
+      <p class="mark">
+        <svg id="logo" xmlns="http://www.w3.org/2000/svg" width="145" viewBox="0 0 145 164">
+          <path fill="#57727D" d="M80.5 39l14.1 14.1c1.4 1.4 3.5 1.4 4.9 0L113.6 39c1.4-1.4 3.5-1.4 4.9 0l15.1 15.1c1.4 1.4 1.4 3.5 0 4.9l-14.1 14.1c-1.4 1.4-1.4 3.5 0 4.9l24.6 24.6c1.4 1.4 1.4 3.5 0 4.9L127.4 124c-1.4 1.4-3.5 1.4-4.9 0L97.9 99.5c-1.4-1.4-1.4-3.5 0-4.9L112 80.5c1.4-1.4 1.4-3.5 0-4.9L97 60.5c-1.4-1.4-3.5-1.4-4.9 0L78 74.6c-1.4 1.4-3.5 1.4-4.9 0L59 60.5c-1.4-1.4-1.4-3.5 0-4.9l14.1-14.1c1.4-1.4 1.4-3.5 0-4.9L59 22.5c-1.4-1.4-1.1-3.8.2-5.1L75.6 1C77-.4 79.1-.4 80.5 1l14.1 14.1c1.4 1.4 1.4 3.5 0 4.9L80.5 34.1c-1.4 1.4-1.4 3.6 0 4.9zM19.1 62.4l82.5 82.5c1.4 1.4 1.4 3.5 0 4.9L88.4 163c-1.4 1.4-3.5 1.4-4.9 0L1 80.5C-.4 79.1-.4 77 1 75.6l13.2-13.2c1.3-1.3 3.5-1.3 4.9 0z"/>
+        </svg>
       </p>
-      <p>we make websites, systems, processes, products and services that are delightful to use, efficient and fast, and that work across devices and networks</p>
-
-      <p class="emails">
-        if you’re interested in working with us, send an email to
-        <a href="mailto:anyone@internetfriendsforever.com">anyone@internetfriendsforever.com</a> <br />
-      </p>
-
-      <p>
-        or <a href="https://www.google.no/maps/place/Nordre+gate+20,+0551+Oslo/@59.9211304,10.7560383,17z/data=!3m1!4b1!4m5!3m4!1s0x46416e6645dd6fad:0xb901ba2a27cb4691!8m2!3d59.9211304!4d10.7582323?hl=en">visit us in person here</a>
-      </p>
-    </article>
-
-    <aside class="meta">
-      <p>
-        <span id="localtime" title="Local time – Europe/Oslo">00.00</span>
-      </p>
-      <p>
-        Nordre gate 20–22<br />
-        Oslo, Norway
-      </p>
-    </aside>
-
-    <p class="mark">
-      <svg id="logo" xmlns="http://www.w3.org/2000/svg" width="145" viewBox="0 0 145 164">
-        <path fill="#57727D" d="M80.5 39l14.1 14.1c1.4 1.4 3.5 1.4 4.9 0L113.6 39c1.4-1.4 3.5-1.4 4.9 0l15.1 15.1c1.4 1.4 1.4 3.5 0 4.9l-14.1 14.1c-1.4 1.4-1.4 3.5 0 4.9l24.6 24.6c1.4 1.4 1.4 3.5 0 4.9L127.4 124c-1.4 1.4-3.5 1.4-4.9 0L97.9 99.5c-1.4-1.4-1.4-3.5 0-4.9L112 80.5c1.4-1.4 1.4-3.5 0-4.9L97 60.5c-1.4-1.4-3.5-1.4-4.9 0L78 74.6c-1.4 1.4-3.5 1.4-4.9 0L59 60.5c-1.4-1.4-1.4-3.5 0-4.9l14.1-14.1c1.4-1.4 1.4-3.5 0-4.9L59 22.5c-1.4-1.4-1.1-3.8.2-5.1L75.6 1C77-.4 79.1-.4 80.5 1l14.1 14.1c1.4 1.4 1.4 3.5 0 4.9L80.5 34.1c-1.4 1.4-1.4 3.6 0 4.9zM19.1 62.4l82.5 82.5c1.4 1.4 1.4 3.5 0 4.9L88.4 163c-1.4 1.4-3.5 1.4-4.9 0L1 80.5C-.4 79.1-.4 77 1 75.6l13.2-13.2c1.3-1.3 3.5-1.3 4.9 0z"/>
-      </svg>
-    </p>
-
-    <script type="text/javascript">
-      var timeContainer = document.getElementById('localtime')
-      function updateClock() {
-        var time = new Date().toLocaleString('nb-NO', { timeZone: 'Europe/Oslo', hour: '2-digit', minute:'2-digit' })
-        timeContainer.textContent=time
-      }
-      window.setInterval(updateClock, 1000)
-    </script>
+    </div>
 
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
