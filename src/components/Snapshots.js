@@ -23,14 +23,32 @@ const Image = styled('img')`
   // transform: translate(-50%, -50%);
 `
 
-const TextCenter = styled('div')`
+// const TextCenter = styled('div')`
+//   position: fixed;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   font-size: 7.5vw;
+//   mix-blend-mode: difference;
+//   color: white;
+//   user-select: none;
+// `
+
+const TextMask = styled('div')`
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 7.5vw;
-  mix-blend-mode: difference;
+  text-align: center;
+  background: black;
   color: white;
+  mix-blend-mode: multiply;
+  user-select: none;
 `
 
 const Contact = styled('div')`
@@ -79,9 +97,15 @@ export default class Snapshots extends Component {
           )
         })}
 
+        <TextMask>
+          internetfriendsforever
+        </TextMask>
+
+        {/*
         <TextCenter>
           internetfriendsforever
         </TextCenter>
+        */}
 
         <Contact>
           <p>
