@@ -1,1 +1,3 @@
-fonts
+.env
+build
+node_modules
