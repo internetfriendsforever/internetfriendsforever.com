@@ -33,10 +33,20 @@ app.use('/invalidate', (req, res) => {
 
 app.use(async (req, res) => {
   try {
+    const seed = Math.random()
     const { path, query } = req
     const { key, params } = router.resolve(routes, path)
     const navigate = path => res.redirect(path)
-    const route = await routes[key || '404']({ path, params, query, navigate, api: apiClient })
+    const api = apiClient
+
+    const route = await routes[key || '404']({
+      path,
+      params,
+      query,
+      navigate,
+      api,
+      seed
+    })
 
     if (!res.headersSent) {
       res.status(route.statusCode || 200).send(`
@@ -52,7 +62,7 @@ app.use(async (req, res) => {
           </head>
           <body>
             <div id='root'>${renderStylesToString(renderToString(route.component))}</div>
-            <script>window.dehydrated = ${apiClient.dehydrate()};</script>
+            <script>window.dehydrated = ${apiClient.dehydrate()}; window.seed = ${seed};</script>
             <script src='/${client}'></script>
           </body>
         </html>

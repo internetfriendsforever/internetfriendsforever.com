@@ -5,9 +5,7 @@ const api = express.Router()
 
 api.get('/snapshots', (req, res) => {
   const query = `
-    *[_type == "snapshot"]{
-      assets[]{..., asset->}
-    }
+    *[_type == "snapshot"]
   `
 
   promiseResponse((

@@ -8,12 +8,14 @@ const api = apiClient('/api')()
 
 api.hydrate(window.dehydrated)
 
+const seed = window.seed
+
 router.listen(async (path, navigate) => {
   const query = queryString.parse(window.location.search)
 
   try {
     const { key, params } = router.resolve(routes, path)
-    const route = await routes[key || '404']({ path, params, query, navigate, api })
+    const route = await routes[key || '404']({ path, params, query, navigate, api, seed })
 
     document.title = route.title
 
