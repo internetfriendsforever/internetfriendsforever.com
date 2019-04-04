@@ -11,7 +11,6 @@ injectGlobal`
     // text-transform: uppercase;
     background: #eee;
     margin: 0;
-    overflow-x: hidden;
   }
 
   @font-face {

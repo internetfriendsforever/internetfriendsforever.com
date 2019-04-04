@@ -6,22 +6,30 @@ import imageUrlBuilder from '../sanity/imageUrlBuilder'
 const Container = styled('div')`
   display: flex;
   flex-wrap: wrap;
-  transform: translateZ(0);
+  overflow: hidden;
 `
 
 const Item = styled('div')`
   position: relative;
-  flex-basis: 200px;
-  padding-top: 200px;
-  flex-grow: 1;
+  flex-basis: 33.333%;
+  flex-grow: 0;
+  flex-shrink: 0;
+
+  @media(min-width: 600px) {
+    flex-basis: 200px;
+  }
+`
+
+const Spacer = styled('div')`
+  padding-top: 100%;
 `
 
 const Image = styled('img')`
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 200%;
+  height: 200%;
 `
 
 export default class Snapshots extends Component {
@@ -33,7 +41,7 @@ export default class Snapshots extends Component {
       .map(snapshot => snapshot.assets.filter(asset => asset._type === 'image'))
       .reduce((result, array) => result.concat(array), [])
 
-    const shuffled = shuffle(images, random)
+    const shuffled = shuffle(images, random).slice(0, 200)
 
     const top = shuffled
 
@@ -43,8 +51,8 @@ export default class Snapshots extends Component {
           const { _key } = image
 
           const src = imageUrlBuilder(image)
-            .width(400)
-            .height(400)
+            .width(800)
+            .height(800)
             .quality(90)
             .auto('format')
             .fit('crop')
@@ -53,7 +61,9 @@ export default class Snapshots extends Component {
 
           return (
             <Item key={_key}>
-              <Image src={src} />
+              <Spacer>
+                <Image src={src} />
+              </Spacer>
             </Item>
           )
         })}
