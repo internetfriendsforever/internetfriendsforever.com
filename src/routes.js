@@ -13,10 +13,11 @@ const TextCenter = styled('div')`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 8.5vw;
+  font-size: 8vw;
   mix-blend-mode: difference;
   color: white;
   user-select: none;
+  text-transform: uppercase;
 `
 
 // const TextCenter = styled('div')`

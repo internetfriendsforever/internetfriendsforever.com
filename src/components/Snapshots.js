@@ -11,12 +11,12 @@ const Container = styled('div')`
 
 const Item = styled('div')`
   position: relative;
-  flex-basis: 33.333%;
+  flex-basis: 25%;
   flex-grow: 0;
   flex-shrink: 0;
 
   @media(min-width: 600px) {
-    flex-basis: 200px;
+    flex-basis: 150px;
   }
 `
 
@@ -51,8 +51,8 @@ export default class Snapshots extends Component {
           const { _key } = image
 
           const src = imageUrlBuilder(image)
-            .width(800)
-            .height(800)
+            .width(600)
+            .height(600)
             .quality(90)
             .auto('format')
             .fit('crop')
