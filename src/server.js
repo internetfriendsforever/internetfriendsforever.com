@@ -33,7 +33,6 @@ app.use('/invalidate', (req, res) => {
 
 app.use(async (req, res) => {
   try {
-    const seed = Math.random()
     const { path, query } = req
     const { key, params } = router.resolve(routes, path)
     const navigate = path => res.redirect(path)
@@ -44,8 +43,7 @@ app.use(async (req, res) => {
       params,
       query,
       navigate,
-      api,
-      seed
+      api
     })
 
     if (!res.headersSent) {
@@ -62,7 +60,7 @@ app.use(async (req, res) => {
           </head>
           <body>
             <div id='root'>${renderStylesToString(renderToString(route.component))}</div>
-            <script>window.dehydrated = ${apiClient.dehydrate()}; window.seed = ${seed};</script>
+            <script>window.dehydrated = ${apiClient.dehydrate()};</script>
             <script src='/${client}'></script>
           </body>
         </html>

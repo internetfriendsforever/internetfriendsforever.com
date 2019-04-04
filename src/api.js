@@ -3,9 +3,18 @@ import client from './sanity/client'
 
 const api = express.Router()
 
-api.get('/snapshots', (req, res) => {
+api.get('/collection', (req, res) => {
   const query = `
-    *[_type == "snapshot"]
+    *[_id == "bc0b2070-b295-4c49-87e2-66d7a069c795"]{
+      _id,
+      title,
+      items[]->{
+        _id,
+        _type,
+        description,
+        media
+      }
+    }[0]
   `
 
   promiseResponse((
