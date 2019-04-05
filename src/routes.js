@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from './components/Layout'
-import Collection from './components/Collection'
+import Catalogue from './components/Catalogue'
 import NotFound from './components/NotFound'
 
 const site = {
@@ -9,13 +9,13 @@ const site = {
 
 export default {
   '/': async ({ path, api }) => {
-    const collection = await api.get('/collection')
+    const catalogue = await api.get('/catalogue')
 
     return {
       title: `${site.name}`,
       component: (
         <Layout path={path}>
-          <Collection collection={collection} />
+          <Catalogue catalogue={catalogue} />
         </Layout>
       )
     }
