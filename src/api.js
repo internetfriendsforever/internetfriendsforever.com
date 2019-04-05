@@ -3,14 +3,13 @@ import client from './sanity/client'
 
 const api = express.Router()
 
-api.get('/collection', (req, res) => {
+api.get('/catalogue', (req, res) => {
   const query = `
-    *[_id == "bc0b2070-b295-4c49-87e2-66d7a069c795"]{
+    *[_id == "fe864f54-661c-4904-9545-0b99d6b99747"]{
       _id,
       title,
-      items[]->{
-        _id,
-        _type,
+      items[]{
+        _key,
         description,
         media[]{
           ...,
