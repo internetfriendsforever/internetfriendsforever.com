@@ -12,7 +12,13 @@ api.get('/collection', (req, res) => {
         _id,
         _type,
         description,
-        media
+        media[]{
+          ...,
+          asset->{
+            mimeType,
+            url
+          }
+        }
       }
     }[0]
   `

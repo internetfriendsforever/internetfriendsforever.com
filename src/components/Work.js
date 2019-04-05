@@ -21,14 +21,35 @@ export default function Work ({ media, description }) {
             return (
               <img key={item._key} src={src} />
             )
+          case 'video':
+            return (
+              <video
+                key={item._key}
+                src={item.asset.url}
+                width={400}
+                controls
+              />
+            )
+
+          case 'iframe':
+            return (
+              <iframe
+                key={item._key}
+                src={item.url}
+                frameBorder={0}
+                allowFullScreen
+              />
+            )
           default:
             return null
         }
       })}
 
-      <figcaption>
-        <BlockContent blocks={description} />
-      </figcaption>
+      {description && (
+        <figcaption>
+          <BlockContent blocks={description} />
+        </figcaption>
+      )}
     </Figure>
   )
 }
