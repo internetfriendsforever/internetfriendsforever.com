@@ -35,7 +35,7 @@ const Figcaption = styled('figcaption')`
   }
 
   @media (min-width: 680px) {
-    padding: 0.5rem;
+    padding: 0.25rem 0.5rem;
     position: absolute;
     z-index: 1;
     top: 0;
@@ -53,13 +53,14 @@ const Figcaption = styled('figcaption')`
 
 const Text = styled('div')`
   position: sticky;
-  top: 0.5rem;
+  top: 0.25rem;
   left: 0;
   padding-bottom: 0.5rem;
   margin-left: 0.5em;
 
   @media (min-width: 680px) {
     margin-left: calc(50% + 0.5rem);
+    letter-spacing: -0.02em;
   }
 `
 
