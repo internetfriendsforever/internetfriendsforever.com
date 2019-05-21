@@ -30,7 +30,7 @@ injectGlobal`
   body {
     font-family: 'IFF Bruce', sans-serif;
     line-height: 1.1;
-    background: #c6c6d2;
+    background: hsla(240, 10%, 74%, 1);
     margin: 0;
     color: white;
     font-feature-settings: 'ss02' 0, 'ss03' 1;
@@ -39,6 +39,7 @@ injectGlobal`
     @media (min-width: 680px) {
       font-size: 0.875em;
       line-height: 1.25;
+      background: hsla(240,7%,13%,1);
     }
   }
 
