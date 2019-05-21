@@ -7,6 +7,13 @@ injectGlobal`
     box-sizing: border-box;
   }
 
+  ::selection {
+    background: black;
+  }
+  ::-moz-selection {
+    background: white;
+  }
+
   @font-face {
     font-family: 'IFF Bruce'; /* Custom typeface by Ellmer Stefan */
     src: url('${require('../assets/fonts/IFFBruce.ttf')}') format('truetype');
@@ -53,13 +60,6 @@ injectGlobal`
   i, em {
     font-feature-settings: 'ss01' 1, 'ss02' 1, 'ss03' 1;
     font-style: normal;
-  }
-
-  ::selection {
-    background: white;
-  }
-  ::-moz-selection {
-    background: black;
   }
 `
 
