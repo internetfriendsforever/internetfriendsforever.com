@@ -1,6 +1,18 @@
+const styles = require('@cyberspace/styles')
 const html = require('../html')
 const sanity = require('../sanity')
 const responsiveImage = require('../partials/responsiveImage')
+
+const css = {
+  figure: styles.add(`
+    margin: 0;
+
+    img,
+    video {
+      max-width: 100%;
+    }
+  `)
+}
 
 module.exports = async () => {
   const catalogue = await sanity.client.fetch(`
@@ -14,7 +26,6 @@ module.exports = async () => {
           ...,
           asset->{
             mimeType,
-            url
             url,
             metadata{
               dimensions{
@@ -60,7 +71,7 @@ module.exports = async () => {
                 max: item.asset.metadata.dimensions.width
               })
             case 'video':
-              return `<video src="${item.asset.url}" width="400" controls></video>`
+              return `<video src="${item.asset.url}" controls></video>`
             case 'iframe':
               return `<iframe src="${item.url}" frameborder="0" allowfullscreen />`
             default:
@@ -75,7 +86,7 @@ module.exports = async () => {
         ` : ''
 
         return `
-          <figure>
+          <figure class="${css.figure}">
             ${items.join('\n')}
             ${caption}
           </figure>

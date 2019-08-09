@@ -1,4 +1,20 @@
+const styles = require('@cyberspace/styles')
 const pretty = require('pretty')
+
+const css = {
+  body: styles.add(`
+    margin: 0;
+
+    a {
+      color: #1f9c76;
+      text-decoration: none;
+
+      :hover {
+        text-decoration: underline;
+      }
+    }
+  `)
+}
 
 module.exports = ({
   statusCode = 200,
@@ -20,7 +36,7 @@ module.exports = ({
         <link rel="icon" type="image/png" href="/assets/favicon.png">
         <link rel="stylesheet" type="text/css" href="/styles.css">
       </head>
-      <body>
+      <body class="${css.body}">
         ${content}
       </body>
     </html>
