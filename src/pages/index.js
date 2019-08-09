@@ -1,6 +1,7 @@
 const html = require('../html')
 const sanity = require('../sanity')
 const item = require('../partials/item')
+const header = require('../partials/header')
 
 module.exports = async () => {
   const catalogue = await sanity.client.fetch(`
@@ -12,6 +13,7 @@ module.exports = async () => {
         description,
         media[]{
           ...,
+          allowUpscaling,
           asset->{
             mimeType,
             url,
@@ -26,6 +28,9 @@ module.exports = async () => {
 
   return html({
     title: 'internetfriendsforever',
-    content: catalogue.items.map(item).join('\n')
+    content: `
+      ${header()}
+      ${catalogue.items.map(item).join('\n')}
+    `
   })
 }

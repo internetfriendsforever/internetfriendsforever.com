@@ -4,8 +4,7 @@ const pretty = require('pretty')
 const css = {
   body: styles.add(`
     @font-face {
-      /* Custom typeface by Ellmer Stefan */
-      font-family: 'IFF Bruce';
+      font-family: 'IFF Bruce'; /* Custom typeface by Ellmer Stefan */
       src: url('assets/IFFBruce.ttf') format('truetype');
       font-weight: 0 100;
     }
@@ -38,30 +37,6 @@ const css = {
         text-decoration: underline;
       }
     }
-
-    header {
-      padding: 0 1em;
-      margin-bottom: 2em;
-
-      h1, p {
-        font-weight: normal;
-        font-size: 1em;
-        margin: 0;
-      }
-
-      section {
-        margin: 1em 0;
-      }
-
-      @media (min-width: 600px) {
-        display: flex;
-
-        section {
-          flex-basis: 20em;
-          margin-right: 1em;
-        }
-      }
-    }
   `)
 }
 
@@ -86,53 +61,13 @@ module.exports = ({
         <link rel="stylesheet" type="text/css" href="/styles.css">
       </head>
       <body class="${css.body}">
-        <header>
-          <section>
-            <h1>internetfriendsforever</h1>
-            <p>
-              <a href='http://danielmahal.com/'>Daniel</a> and
-              <a href='http://s-g-k.org/'>Seb</a>
-              working today for our better tomorrow
-            </p>
-          </section>
-
-          <section>
-            <p>
-              <a title='Go to map' href='https://www.openstreetmap.org/node/2785466073'>
-                Grønlandsleiret 39<br />
-                0190 Oslo
-              </a>
-              <br />
-              <a title='Send us an email' href='mailto:anyone@internetfriendsforever.com'>
-                anyone [at] internetfriendsforever.com
-              </a>
-            </p>
-          </section>
-        </header>
-
         ${content}
 
         <script>
-          Array.from(document.querySelectorAll('figure img')).forEach(img => {
-            img.style.maxWidth = parseInt(img.getAttribute('width'), 10) / window.devicePixelRatio + 'px'
-          })
-
-          const observer = new window.IntersectionObserver(entries => {
-            entries.forEach(entry => {
-              const video = entry.target
-
-              console.log(video, entry.isIntersecting)
-
-              if (entry.isIntersecting) {
-                video.play()
-              } else {
-                video.pause()
-              }
-            })
-          })
-
-          Array.from(document.querySelectorAll('figure video')).forEach(video => {
-            observer.observe(video)
+          Array.from(document.querySelectorAll('figure img')).forEach(image => {
+            if (image.getAttribute('data-allow-upscaling') === "false") {
+              image.style.maxWidth = parseInt(image.getAttribute('width'), 10) / window.devicePixelRatio + 'px'
+            }
           })
         </script>
       </body>
