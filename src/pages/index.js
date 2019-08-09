@@ -1,5 +1,6 @@
 const html = require('../html')
 const sanity = require('../sanity')
+const responsiveImage = require('../partials/responsiveImage')
 
 module.exports = async () => {
   const catalogue = await sanity.client.fetch(`
@@ -14,6 +15,12 @@ module.exports = async () => {
           asset->{
             mimeType,
             url
+            url,
+            metadata{
+              dimensions{
+                width
+              }
+            }
           }
         }
       }
@@ -49,7 +56,9 @@ module.exports = async () => {
         const items = media.map(item => {
           switch (item._type) {
             case 'image':
-              return `<img src="${sanity.image(item).width(400).auto('format').url()}" />`
+              return responsiveImage(item, {
+                max: item.asset.metadata.dimensions.width
+              })
             case 'video':
               return `<video src="${item.asset.url}" width="400" controls></video>`
             case 'iframe':
