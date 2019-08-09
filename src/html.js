@@ -30,7 +30,7 @@ const css = {
     }
 
     a {
-      color: #1f9c76;
+      color: rgb(246, 199, 129);
       text-decoration: none;
 
       :hover {
