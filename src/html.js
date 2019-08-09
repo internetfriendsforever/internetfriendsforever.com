@@ -59,10 +59,16 @@ module.exports = ({
     <html lang="no">
       <head>
         <title>${title}</title>
+        <meta name="description" content="Daniel and Seb working today for your better tomorrow">
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#000" />
-        <link rel="icon" type="image/png" href="/assets/favicon.jpg">
+        <link rel="icon" type="image/jpg" href="/assets/favicon.jpg">
+        <meta property="og:description" content="Daniel and Seb working today for your better tomorrow" />
+        <meta property="og:url" content="https://internetfriendsforever.com/" />
+        <meta property="og:image" content="https://internetfriendsforever.com/uploads/original-g.jpg" />
+        <meta property="og:image:width" content="2170" />
+        <meta property="og:image:height" content="1770" />
         <link rel="stylesheet" type="text/css" href="/styles.css">
       </head>
       <body class="${css.body}">
@@ -74,6 +80,11 @@ module.exports = ({
               image.style.maxWidth = parseInt(image.getAttribute('width'), 10) / window.devicePixelRatio + 'px'
             }
           })
+        </script>
+
+        <script src="https://unpkg.com/balance-text@3.3.0/balancetext.js"></script>
+        <script>
+          balanceText(Array.from(document.querySelectorAll('figure figcaption p')))
         </script>
       </body>
     </html>

@@ -32,7 +32,7 @@ module.exports = () => `
       <p>
         <a href='http://danielmahal.com/'>Daniel</a> and
         <a href='http://s-g-k.org/'>Seb</a>
-        working today for our better tomorrow
+        working today for your better tomorrow
       </p>
     </section>
 
