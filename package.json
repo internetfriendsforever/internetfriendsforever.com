@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "run start",
-    "deploy": "run deploy internetfriendsforever.cyberspace.run",
+    "deploy": "run deploy internetfriendsforever.cyberspace.run && npm run invalidate",
+    "invalidate": "curl --data \"\" https://internetfriendsforever.cyberspace.run/invalidate",
     "test": "eslint src/**/*.js"
   },
   "dependencies": {
