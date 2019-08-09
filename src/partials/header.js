@@ -39,8 +39,7 @@ module.exports = () => `
     <section>
       <p>
         <a title='Go to map' href='https://www.openstreetmap.org/node/2785466073'>
-          Grønlandsleiret 39<br />
-          0190 Oslo
+          Grønlandsleiret 39, 0190 Oslo
         </a>
         <br />
         <a title='Send us an email' href='mailto:anyone@internetfriendsforever.com'>
