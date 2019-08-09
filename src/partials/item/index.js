@@ -34,7 +34,7 @@ module.exports = ({ media, description }) => `
       default:
         return ''
       }
-    })}
+    }).join('')}
 
     ${description ? `
       <figcaption class="${css.caption}">

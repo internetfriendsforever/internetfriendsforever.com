@@ -29,6 +29,11 @@ const css = {
       font-size: 15px;
     }
 
+    & ::selection {
+      background-color: rgb(246, 199, 129);
+      color: rgb(10, 9, 11);
+    }
+
     a {
       color: rgb(246, 199, 129);
       text-decoration: none;
@@ -57,7 +62,7 @@ module.exports = ({
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#000" />
-        <link rel="icon" type="image/png" href="/assets/favicon.png">
+        <link rel="icon" type="image/png" href="/assets/favicon.jpg">
         <link rel="stylesheet" type="text/css" href="/styles.css">
       </head>
       <body class="${css.body}">
