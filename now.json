@@ -1,6 +1,0 @@
-{
-  "alias": "internetfriendsforever.now.sh",
-  "env": {
-    "SANITY_TOKEN": "@internetfriendsforever-sanity-token"
-  }
-}
