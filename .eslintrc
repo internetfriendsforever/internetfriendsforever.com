@@ -1,8 +1,5 @@
 {
-  "parser": "babel-eslint",
-
-  "extends": [
-    "standard",
-    "standard-jsx"
-  ]
+  "rules": {
+    "indent": [{ "ignoredNodes": ["TemplateLiteral > *"] }]
+  }
 }
