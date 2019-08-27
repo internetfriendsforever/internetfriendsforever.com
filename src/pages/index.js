@@ -27,6 +27,8 @@ module.exports = async () => {
   `)
 
   return html({
+    title: 'internetfriendsforever — design · research · communication',
+    description: 'Daniel and Seb working today for your better tomorrow',
     content: `
       ${header()}
       ${catalogue.items.map(item).join('\n')}

@@ -53,19 +53,20 @@ module.exports = ({
 }) => ({
   statusCode,
   headers: {
-    'Content-Type': 'text/html'
+    'Content-Type': 'text/html',
+    'Cache-Control': 'max-age=31557600'
   },
   body: pretty(`
     <!doctype html>
     <html lang="no">
       <head>
-        <title>internetfriendsforever — design · research · communication</title>
-        <meta name="description" content="Daniel and Seb working today for your better tomorrow">
+        <title>${title}</title>
+        <meta name="description" content="${description}">
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#000" />
         <link rel="icon" type="image/jpg" href="/assets/favicon.jpg">
-        <meta property="og:description" content="Daniel and Seb working today for your better tomorrow" />
+        <meta property="og:description" content="${description}" />
         <meta property="og:url" content="https://internetfriendsforever.com/" />
         <meta property="og:image" content="https://internetfriendsforever.com/assets/favicon.jpg" />
         <meta property="og:image:width" content="1024" />
