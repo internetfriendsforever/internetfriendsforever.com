@@ -47,7 +47,8 @@ const css = {
 
 module.exports = ({
   statusCode = 200,
-  title,
+  title = '',
+  description = '',
   content
 }) => ({
   statusCode,
@@ -58,7 +59,7 @@ module.exports = ({
     <!doctype html>
     <html lang="no">
       <head>
-        <title>${title}</title>
+        <title>internetfriendsforever — design · research · communication</title>
         <meta name="description" content="Daniel and Seb working today for your better tomorrow">
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -66,9 +67,9 @@ module.exports = ({
         <link rel="icon" type="image/jpg" href="/assets/favicon.jpg">
         <meta property="og:description" content="Daniel and Seb working today for your better tomorrow" />
         <meta property="og:url" content="https://internetfriendsforever.com/" />
-        <meta property="og:image" content="https://internetfriendsforever.com/uploads/original-g.jpg" />
-        <meta property="og:image:width" content="2170" />
-        <meta property="og:image:height" content="1770" />
+        <meta property="og:image" content="https://internetfriendsforever.com/assets/favicon.jpg" />
+        <meta property="og:image:width" content="1024" />
+        <meta property="og:image:height" content="1024" />
         <link rel="stylesheet" type="text/css" href="/styles.css">
       </head>
       <body class="${css.body}">

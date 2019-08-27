@@ -7,7 +7,6 @@ module.exports = async () => {
   const catalogue = await sanity.client.fetch(`
     *[_id == "fe864f54-661c-4904-9545-0b99d6b99747"]{
       _id,
-      title,
       items[]{
         _key,
         description,
@@ -22,12 +21,12 @@ module.exports = async () => {
             }
           }
         }
-      }
+      },
+      meta
     }[0]
   `)
 
   return html({
-    title: 'internetfriendsforever — design · research · communication',
     content: `
       ${header()}
       ${catalogue.items.map(item).join('\n')}
