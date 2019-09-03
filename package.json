@@ -9,7 +9,7 @@
     "test": "eslint src/**/*.js"
   },
   "dependencies": {
-    "@cyberspace/run": "^0.3.36",
+    "@cyberspace/run": "^0.3.37",
     "@cyberspace/run-cache": "^0.3.1",
     "@cyberspace/run-file": "^0.3.31",
     "@cyberspace/run-router": "^0.3.32",
