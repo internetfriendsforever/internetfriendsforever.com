@@ -71,7 +71,7 @@ module.exports = ({
         <meta property="og:image" content="https://internetfriendsforever.com/assets/favicon.jpg" />
         <meta property="og:image:width" content="1024" />
         <meta property="og:image:height" content="1024" />
-        <link rel="stylesheet" type="text/css" href="/styles.css">
+        <link rel="stylesheet" type="text/css" href="/styles.css?${Math.random()}">
       </head>
       <body class="${css.body}">
         ${content}
