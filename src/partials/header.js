@@ -18,7 +18,7 @@ const css = {
       display: flex;
 
       section {
-        flex-basis: 30em;
+        flex-basis: 18em;
         margin-right: 2em;
       }
     }
@@ -29,6 +29,9 @@ module.exports = () => `
   <header class="${css.header}">
     <section>
       <h1>internetfriendsforever</h1>
+    </section>
+
+    <section>
       <p class="about">
         <a href="http://danielmahal.com/">Daniel</a> and
         <a href="http://s-g-k.org/">Seb</a>
@@ -39,8 +42,7 @@ module.exports = () => `
     <section>
       <p>
         <a title="Go to map" href="https://www.openstreetmap.org/node/2785466073" target="_blank" rel="noopener noreferer">
-          Grønlandsleiret 39, 0190 Oslo
-        </a>
+          Grønlandsleiret 39</a> 0190 Oslo, Norway
         <br />
         <a title="Send us an email" href="mailto:anyone@internetfriendsforever.com">
           anyone&nbsp;[at]&nbsp;internetfriendsforever.com
