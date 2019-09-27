@@ -9,10 +9,10 @@
     "test": "eslint src/**/*.js"
   },
   "dependencies": {
-    "@cyberspace/run": "^0.3.37",
+    "@cyberspace/run": "^0.3.39",
     "@cyberspace/run-cache": "^0.3.1",
     "@cyberspace/run-file": "^0.3.31",
-    "@cyberspace/run-router": "^0.3.32",
+    "@cyberspace/run-router": "^0.3.35",
     "@cyberspace/styles": "^0.3.20",
     "@sanity/block-content-to-html": "^1.3.8",
     "@sanity/client": "^0.141.6",
