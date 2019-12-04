@@ -41,7 +41,7 @@ export default class Snapshots extends Component {
       .map(snapshot => snapshot.assets.filter(asset => asset._type === 'image'))
       .reduce((result, array) => result.concat(array), [])
 
-    const shuffled = shuffle(images, random).slice(0, 200)
+    const shuffled = shuffle(images, random).slice(0, 500)
 
     const top = shuffled
 

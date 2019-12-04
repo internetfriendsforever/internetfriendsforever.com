@@ -10,10 +10,9 @@ const site = {
 
 const TextCenter = styled('div')`
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 8vw;
+  top: 0.5em;
+  left: 0.5em;
+  font-size: 1em;
   mix-blend-mode: difference;
   color: white;
   user-select: none;
