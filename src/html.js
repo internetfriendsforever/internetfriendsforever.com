@@ -46,51 +46,43 @@ const css = {
 }
 
 module.exports = ({
-  statusCode = 200,
   title = '',
   description = '',
   content
-}) => ({
-  statusCode,
-  headers: {
-    'Content-Type': 'text/html',
-    'Cache-Control': 'max-age=31557600'
-  },
-  body: pretty(`
-    <!doctype html>
-    <html lang="no">
-      <head>
-        <title>${title}</title>
-        <meta name="description" content="${description}">
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000" />
-        <link rel="icon" type="image/jpg" href="/assets/favicon.jpg">
-        <meta property="og:description" content="${description}" />
-        <meta property="og:url" content="https://internetfriendsforever.com/" />
-        <meta property="og:image" content="https://internetfriendsforever.com/assets/favicon.jpg" />
-        <meta property="og:image:width" content="1024" />
-        <meta property="og:image:height" content="1024" />
-        <link rel="stylesheet" type="text/css" href="/styles.css?${Math.random()}">
-      </head>
-      <body class="${css.body}">
-        ${content}
+}) => pretty(`
+  <!doctype html>
+  <html lang="no">
+    <head>
+      <title>${title}</title>
+      <meta name="description" content="${description}">
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="theme-color" content="#000" />
+      <link rel="icon" type="image/jpg" href="assets/favicon.jpg">
+      <meta property="og:description" content="${description}" />
+      <meta property="og:url" content="https://internetfriendsforever.com/" />
+      <meta property="og:image" content="https://internetfriendsforever.com/assets/favicon.jpg" />
+      <meta property="og:image:width" content="1024" />
+      <meta property="og:image:height" content="1024" />
+      <link rel="stylesheet" type="text/css" href="styles.css?${Math.random()}">
+    </head>
+    <body class="${css.body}">
+      ${content}
 
-        <script>
-          Array.from(document.querySelectorAll('figure img')).forEach(image => {
-            if (image.getAttribute('data-allow-upscaling') === "false") {
-              image.style.maxWidth = parseInt(image.getAttribute('width'), 10) / window.devicePixelRatio + 'px'
-            }
-          })
-        </script>
+      <script>
+        Array.from(document.querySelectorAll('figure img')).forEach(image => {
+          if (image.getAttribute('data-allow-upscaling') === "false") {
+            image.style.maxWidth = parseInt(image.getAttribute('width'), 10) / window.devicePixelRatio + 'px'
+          }
+        })
+      </script>
 
-        <script src="https://unpkg.com/balance-text@3.3.0/balancetext.js"></script>
-        <script>
-          balanceText(Array.from(document.querySelectorAll('figure figcaption p')))
-        </script>
-      </body>
-    </html>
-  `, {
-    ocd: true
-  })
+      <script src="https://unpkg.com/balance-text@3.3.0/balancetext.js"></script>
+      <script>
+        balanceText(Array.from(document.querySelectorAll('figure figcaption p')))
+      </script>
+    </body>
+  </html>
+`, {
+  ocd: true
 })
