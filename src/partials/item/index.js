@@ -1,45 +1,49 @@
-const styles = require('@cyberspace/styles')
-const image = require('./image')
-const video = require('./video')
-const sanity = require('../../sanity')
+const { localize } = require('../../i18n')
 
-const css = {
-  figure: styles.add(`
-    position: relative;
-    margin: 6em 0;
+module.exports = ({ project }) => {
+  const {
+    title,
+    slug,
+    outcomes = [],
+    roles = [],
+    relations = []
+  } = project
 
-    video {
-      display: block;
-      max-width: 90vw;
-      margin: 0 auto;
-    }
-  `),
+  return `
+    <section id="${localize(slug).current}">
+      <h2>${localize(title)}</h2>
 
-  caption: styles.add(`
-    max-width: 32em;
-    padding: 0 1em;
-    margin: 0 auto;
-    text-align: center;
-  `)
+      ${outcomes.length ? `
+        <h3>${localize('Outcomes')}</h3>
+        <ul>
+          ${outcomes.map(outcome => `
+            <li>${localize(outcome.type.name)}</li>
+          `).join('')}
+        </ul>
+      ` : ''}
+
+      ${roles.length ? `
+        <h3>${localize('Roles')}</h3>
+        <ul>
+          ${roles.map(role => `
+            <li>${localize(role.name)}</li>
+          `).join('')}
+        </ul>
+      ` : ''}
+
+      ${relations.length ? `
+        <h3>${localize('Relations')}</h3>
+        <ul>
+          ${relations.map(({ relation, roles = [] }) => `
+            <li>
+              ${localize(relation.name)}
+              ${roles.length ? `
+                (${roles.map(role => localize(role.name)).join(', ')})
+              ` : ''}
+            </li>
+          `).join('')}
+        </ul>
+      ` : ''}
+    </section>
+  `
 }
-
-module.exports = ({ media, description }) => `
-  <figure class="${css.figure}">
-    ${media.map(item => {
-      switch (item._type) {
-      case 'image':
-        return image(item)
-      case 'video':
-        return video(item)
-      default:
-        return ''
-      }
-    }).join('')}
-
-    ${description ? `
-      <figcaption class="${css.caption}">
-        ${sanity.html(description)}
-      </figcaption>
-    ` : ''}
-  </figure>
-`
