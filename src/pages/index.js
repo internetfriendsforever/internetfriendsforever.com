@@ -73,6 +73,8 @@ module.exports = async () => {
             },
             documentation[]{
               _type,
+              crop,
+              hotspot,
               asset->{
                 url,
                 metadata{
