@@ -1,19 +1,18 @@
 const styles = require('@cyberspace/styles')
-const sanity = require('../../sanity')
+const sanity = require('../sanity')
 
 const min = 320
 const interval = 320
 
 const css = styles.add(`
   display: block;
-  width: 100%;
-  height: auto;
-  margin: 0 auto;
+  max-height: 70vh;
+  max-width: 90vw;
 `)
 
 module.exports = item => {
-  const { asset, allowUpscaling = false } = item
-  const { width, height } = asset.metadata.dimensions
+  const { asset } = item
+  const { width } = asset.metadata.dimensions
   const max = width
   const range = max - min
   const steps = Math.floor(range / interval)
@@ -25,11 +24,8 @@ module.exports = item => {
   return `
     <img
       class="${css}"
-      width="${width}"
-      height="${height}"
       src="${smallest}"
       srcSet="${set}"
       sizes="100vw"
-      data-allow-upscaling=${allowUpscaling}
     />`
 }

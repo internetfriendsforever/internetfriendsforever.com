@@ -2,8 +2,8 @@ const styles = require('@cyberspace/styles')
 
 const css = styles.add(`
   display: block;
+  max-height: 70vh;
   max-width: 90vw;
-  margin: 0 auto;
 `)
 
 module.exports = item => `

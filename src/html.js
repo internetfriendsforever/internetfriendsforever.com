@@ -20,6 +20,21 @@ module.exports = ({
       <meta property="og:image:width" content="1024" />
       <meta property="og:image:height" content="1024" />
       <link rel="stylesheet" type="text/css" href="styles.css" />
+      <style>
+        html {
+          scroll-behavior: smooth;
+        }
+
+        body {
+          background: #f8f7f8;
+          min-width: min-content;
+          margin: 0;
+        }
+
+        figure {
+          margin: 0;
+        }
+      </style>
     </head>
     <body>
       ${content}

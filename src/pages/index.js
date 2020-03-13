@@ -1,8 +1,28 @@
+const styles = require('@cyberspace/styles')
 const html = require('../html')
 const sanity = require('../sanity')
 const { localize } = require('../i18n')
-const item = require('../partials/item')
-const header = require('../partials/header')
+const projectItem = require('../partials/projectItem')
+
+const css = {
+  index: styles.add(`
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: max-content;
+    margin: 1em 0;
+
+    summary {
+      cursor: pointer;
+    }
+
+    ul {
+      padding: 0;
+      list-style: none;
+    }
+  `)
+}
 
 module.exports = async () => {
   const catalogue = await sanity.client.fetch(`
@@ -15,6 +35,15 @@ module.exports = async () => {
           outcomes[]{
             type->{
               name
+            },
+            documentation[]{
+              _type,
+              asset->{
+                url,
+                metadata{
+                  dimensions
+                }
+              }
             }
           },
           roles[]->{
@@ -39,22 +68,24 @@ module.exports = async () => {
     title: 'internetfriendsforever — design · research · communication',
     description: 'Daniel and Seb working today for your better tomorrow',
     content: `
-      ${header()}
+      <h1>internetfriendsforever</h1>
       
-      <details>
+      <details class="${css.index}">
         <summary>Index</summary>
-        <ul>
-          ${items.map(item => `
-            <li>
-              <a href="#${localize(item.project.slug).current}">
-                ${localize(item.project.title)}
-              </a>
-            </li>
-          `).join('')}
-        </ul>
+        <nav>
+          <ul>
+            ${items.map(item => `
+              <li>
+                <a href="#${localize(item.project.slug).current}">
+                  ${localize(item.project.title)}
+                </a>
+              </li>
+            `).join('')}
+          </ul>
+        </nav>
       </details>
       
-      ${items.map(item).join('')}
+      ${items.map(projectItem).join('')}
     `
   })
 }
