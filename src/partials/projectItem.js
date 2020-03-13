@@ -41,14 +41,17 @@ const css = {
 module.exports = ({ project }) => {
   const {
     title,
-    slug,
     outcomes = [],
     roles = [],
     relations = []
   } = project
 
+  const slug = localize(project.slug).current
+
+  let documentationIndex = 0
+
   return `
-    <section id="${localize(slug).current}" class="${css.container}">
+    <section id="${slug}" class="${css.container}">
       <div class="${css.description}">
         <h2>
           ${localize(title)}
@@ -84,12 +87,14 @@ module.exports = ({ project }) => {
             <div>
               <h3>${localize(type.name)}</h3>
               <div class="${css.figures}">
-                ${documentation.map(item => `
-                  <figure class="${css.figure}">
-                    ${item._type === 'video' ? video(item) : ''}
-                    ${item._type === 'image' ? image(item) : ''}
-                  </figure>
-                `).join('')}
+                ${documentation.map(item => {
+                  return `
+                    <figure class="${css.figure}" id="${slug}-${documentationIndex++}">
+                      ${item._type === 'video' ? video(item) : ''}
+                      ${item._type === 'image' ? image(item) : ''}
+                    </figure>
+                  `
+                }).join('')}
               </div>
             </div>
           `).join('')}

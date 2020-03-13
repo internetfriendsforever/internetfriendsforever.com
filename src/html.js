@@ -38,6 +38,7 @@ module.exports = ({
     </head>
     <body>
       ${content}
+      <script src="assets/index.js"></script>
     </body>
   </html>
 `, {

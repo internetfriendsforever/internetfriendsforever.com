@@ -20,6 +20,41 @@ const css = {
     ul {
       padding: 0;
       list-style: none;
+
+      > li {
+        > ul {
+          display: flex;
+          order: 0;
+
+          > li {
+            > a {
+              position: relative;
+              display: block;
+              flex: 1;
+              width: 0.75em;
+              height: 0.75em;
+              color: transparent;
+              overflow: hidden;
+
+              ::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 1px;
+                right: 1px;
+                background: white;
+                border: 1px solid black;
+              }
+
+              :hover::after,
+              &.in-viewport::after {
+                background: black;
+              }
+            }
+          }
+        }
+      }
     }
   `)
 }
@@ -70,17 +105,38 @@ module.exports = async () => {
     content: `
       <h1>internetfriendsforever</h1>
       
-      <details class="${css.index}">
+      <details class="${css.index}" open>
         <summary>Index</summary>
         <nav>
           <ul>
-            ${items.map(item => `
-              <li>
-                <a href="#${localize(item.project.slug).current}">
-                  ${localize(item.project.title)}
-                </a>
-              </li>
-            `).join('')}
+            ${items.map(item => {
+              const { project } = item
+              const { outcomes = [] } = project
+              const slug = localize(project.slug).current
+
+              const documentation = outcomes.flatMap(outcome => (
+                outcome.documentation
+              )).filter(Boolean)
+
+              return `
+                <li>
+                  <a href="#${slug}">
+                    ${localize(item.project.title)}
+                  </a>
+                  ${documentation.length ? `
+                    <ul>
+                      ${documentation.map((item, i) => `
+                        <li>
+                          <a href="#${slug}-${i}">
+                            ${i}
+                          </a>
+                        </li>
+                      `).join('')}
+                    </ul>
+                  ` : ''}
+                </li>
+              `
+            }).join('')}
           </ul>
         </nav>
       </details>
