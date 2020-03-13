@@ -105,7 +105,7 @@ module.exports = async () => {
     content: `
       <h1>internetfriendsforever</h1>
       
-      <details class="${css.index}" open>
+      <details class="${css.index}">
         <summary>Index</summary>
         <nav>
           <ul>
