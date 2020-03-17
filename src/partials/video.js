@@ -6,6 +6,16 @@ const css = styles.add(`
   max-width: 90vw;
 `)
 
-module.exports = item => `
-  <video class="${css}" src="${item.asset.url}" controls loop></video>
-`
+module.exports = item => {
+  const { poster } = item
+
+  return `
+    <video
+      class="${css}"
+      src="${item.asset.url}"
+      ${poster ? `poster="${poster.asset.url}"` : ''}
+      controls
+      loop
+    ></video>
+  `
+}
