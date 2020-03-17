@@ -6,7 +6,7 @@ const interval = 320
 
 const css = styles.add(`
   display: block;
-  max-height: 70vh;
+  max-height: 90vh;
   max-width: 90vw;
 `)
 
