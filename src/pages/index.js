@@ -75,6 +75,16 @@ module.exports = async () => {
               _type,
               crop,
               hotspot,
+              caption,
+              description,
+              credits[]{
+                relation->{
+                  name
+                },
+                roles[]->{
+                  name
+                }
+              },
               poster{
                 asset->{
                   url

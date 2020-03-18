@@ -7,11 +7,11 @@ const interval = 320
 const css = styles.add(`
   display: block;
   max-height: 90vh;
-  max-width: 90vw;
+  max-width: 100%;
 `)
 
 module.exports = item => {
-  const { asset } = item
+  const { asset, description = '' } = item
   const { width } = asset.metadata.dimensions
   const max = width
   const range = max - min
@@ -27,5 +27,6 @@ module.exports = item => {
       src="${smallest}"
       srcSet="${set}"
       sizes="100vw"
+      alt="${description.replace(/"/g, '&quot;')}"
     />`
 }
