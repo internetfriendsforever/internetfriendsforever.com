@@ -16,12 +16,16 @@ const css = {
     position: sticky;
     left: 0;
     width: max-content;
+    max-width: 100vw;
+    padding: 0 1em;
+    box-sizing: border-box;
   `),
 
   outcomes: styles.add(`
     display: flex;
     width: max-content;
     align-items: flex-end;
+    padding: 0 1em;
   `),
 
   figures: styles.add(`
@@ -31,8 +35,8 @@ const css = {
   `),
 
   figure: styles.add(`
-    margin-right: 1em;
-    max-width: 90vw;
+    margin-right: 2.5em;
+    max-width: 85vw;
   `)
 }
 

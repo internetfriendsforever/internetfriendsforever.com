@@ -6,13 +6,12 @@ const interval = 320
 
 const css = styles.add(`
   display: block;
-  max-height: 90vh;
   max-width: 100%;
 `)
 
 module.exports = item => {
   const { asset, description = '' } = item
-  const { width } = asset.metadata.dimensions
+  const { width, height } = asset.metadata.dimensions
   const max = width
   const range = max - min
   const steps = Math.floor(range / interval)
@@ -20,6 +19,8 @@ module.exports = item => {
   const sources = widths.map(width => sanity.image(item).width(width).auto('format').url())
   const set = sources.map((src, i) => `${src} ${widths[i]}w`)
   const smallest = sources[0]
+  const aspect = height / width
+  const maxHeight = 85 + (aspect - 1) * 30
 
   return `
     <img
@@ -28,5 +29,6 @@ module.exports = item => {
       srcSet="${set}"
       sizes="100vw"
       alt="${description.replace(/"/g, '&quot;')}"
+      style="max-height: ${maxHeight}vh;"
     />`
 }
