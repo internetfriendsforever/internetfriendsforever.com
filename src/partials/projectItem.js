@@ -90,7 +90,9 @@ module.exports = ({ project }) => {
               <h3>${localize(type.name)}</h3>
               <div class="${css.figures}">
                 ${documentation.map(item => {
-                  const { _type, credits = [], caption } = item
+                  const { _type, credits = [] } = item
+                  const caption = localize(item.caption)
+
                   return `
                     <figure class="${css.figure}" id="${slug}-${documentationIndex++}">
                       ${_type === 'video' ? video(item) : ''}
