@@ -1,5 +1,6 @@
 const styles = require('@cyberspace/styles')
 const sanity = require('../sanity')
+const { localize } = require('../i18n')
 
 const min = 320
 const interval = 320
@@ -10,7 +11,7 @@ const css = styles.add(`
 `)
 
 module.exports = item => {
-  const { asset, description = '' } = item
+  const { asset } = item
   const { width, height } = asset.metadata.dimensions
   const max = width
   const range = max - min
@@ -21,6 +22,7 @@ module.exports = item => {
   const smallest = sources[0]
   const aspect = height / width
   const maxHeight = 85 + (aspect - 1) * 30
+  const description = localize(item.description) || ''
 
   return `
     <img
