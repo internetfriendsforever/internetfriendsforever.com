@@ -7,14 +7,21 @@ const projectItem = require('../partials/projectItem')
 const css = {
   index: styles.add(`
     position: sticky;
-    top: 0;
-    left: 0;
+    top: 1em;
+    left: 1em;
     z-index: 10;
     width: max-content;
-    margin: 1em 0;
+    margin: 1em;
 
     summary {
       cursor: pointer;
+    }
+
+    h1 {
+      font-size: 1em;
+      margin: 0;
+      display: inline;
+      font-weight: normal;
     }
 
     ul {
@@ -67,6 +74,8 @@ module.exports = async () => {
         project->{
           title,
           slug,
+          startDate,
+          endDate,
           outcomes[]{
             type->{
               name
@@ -120,10 +129,8 @@ module.exports = async () => {
     title: 'internetfriendsforever — design · research · communication',
     description: 'Daniel and Seb working today for your better tomorrow',
     content: `
-      <h1>internetfriendsforever</h1>
-      
       <details class="${css.index}">
-        <summary>Index</summary>
+        <summary><h1>index <b>internetfriendsforever</b></h1></summary>
         <nav>
           <ul>
             ${items.map(item => {
@@ -157,7 +164,7 @@ module.exports = async () => {
           </ul>
         </nav>
       </details>
-      
+
       ${items.map(projectItem).join('')}
     `
   })

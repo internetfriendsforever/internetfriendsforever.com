@@ -1,5 +1,6 @@
 const styles = require('@cyberspace/styles')
 const { localize } = require('../i18n')
+const { sentenceCase, getYear } = require('../utils')
 const image = require('./image')
 const video = require('./video')
 const sanity = require('../sanity')
@@ -9,6 +10,7 @@ const css = {
     display: flex;
     flex-direction: column;
     width: max-content;
+    margin: 6rem 0;
   `),
 
   description: styles.add(`
@@ -17,15 +19,38 @@ const css = {
     left: 0;
     width: max-content;
     max-width: 100vw;
-    padding: 0 1em;
+    padding: 0 0.75rem;
     box-sizing: border-box;
+
+    h2, h3 {
+      font-size: 1em;
+    }
+
+    h2 {
+      color: dimgray;
+      font-weight: 500;
+      margin: 1em 0 0 0;
+    }
+
+    @media (min-width: 40em) {
+      width: auto;
+      min-width: 50em;
+      max-width: 50em;
+      display: flex;
+      flex-wrap: wrap;
+
+      > div {
+        flex: 1;
+        min-width: 50%;
+      }
+    }
   `),
 
   outcomes: styles.add(`
     display: flex;
     width: max-content;
     align-items: flex-end;
-    padding: 0 1em;
+    padding: 0 0.75rem;
   `),
 
   figures: styles.add(`
@@ -37,16 +62,80 @@ const css = {
   figure: styles.add(`
     margin-right: 2.5em;
     max-width: 85vw;
+    display: flex;
+
+    figcaption {
+      font-size: 0.8em;
+      flex: 0;
+      width: min-content;
+      min-width: 10em;
+      display: flex;
+      align-items: flex-end;
+
+      p {
+        margin-bottom: 0;
+
+        &:first-child {
+          ::before {
+            font-size: 0.7em;
+            vertical-align: middle;
+            content: '◀ ';
+            margin-right: 0.3em;
+          }
+        }
+      }
+    }
+  `),
+
+  roles: styles.add(`
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      display: inline-block;
+
+      &:not(:first-child) {
+        text-transform: lowercase;
+      }
+
+      &:not(:last-child) {
+        ::after {
+          content: ',';
+        }
+      }
+    }
+  `),
+
+  relations: styles.add(`
+    margin-top: 0.75em;
+    padding: 0;
+    list-style: none;
+
+    li {
+      display: inline-block;
+      margin-right: 0.75em;
+      margin-top: 0.2em;
+    }
   `)
 }
 
 module.exports = ({ project }) => {
+  console.log(project)
   const {
     title,
+    startDate,
+    endDate,
     outcomes = [],
     roles = [],
     relations = []
   } = project
+
+  const dateString = getYear(startDate) === getYear(endDate)
+    ? getYear(endDate) : startDate && endDate
+      ? `${getYear(startDate)}–${getYear(endDate)}` : !startDate && endDate
+        ? getYear(endDate) : startDate && !endDate
+          ? `${getYear(startDate)}–ongoing` : ''
 
   const slug = localize(project.slug).current
 
@@ -55,39 +144,46 @@ module.exports = ({ project }) => {
   return `
     <section id="${slug}" class="${css.container}">
       <div class="${css.description}">
-        <h2>
-          ${localize(title)}
-        </h2>
+        <div>
+          <h2>
+            ${localize(title)}
+          </h2>
 
-        ${roles.length ? `
-          <h3>${localize('Roles')}</h3>
-          <ul>
-            ${roles.map(role => `
-              <li>${localize(role.name)}</li>
-            `).join('')}
-          </ul>
-        ` : ''}
+          ${roles.length ? `
+            <ul class="roles ${css.roles}" title="${localize('Roles')}">
+              ${roles.map(role => `
+                <li>${localize(role.name)}</li>
+              `).join('')}
+            </ul>
+          ` : ''}
+
+          ${dateString ? `
+            <div>
+              ${dateString}
+            </div>
+          ` : ''}
+        </div>
 
         ${relations.length ? `
-          <h3>${localize('Relations')}</h3>
-          <ul>
-            ${relations.map(({ relation, roles = [] }) => `
-              <li>
-                ${localize(relation.name)}
+          <div>
+            <ul class="${css.relations}" title="${localize('Relations')}">
+              ${relations.map(({ relation, roles = [] }) => `
                 ${roles.length ? `
-                  – ${roles.map(role => localize(role.name)).join(', ')}
+                  <li>
+                    ${sentenceCase(roles.map(role => localize(role.name)).join(', '))}
+                    <b>${localize(relation.name)}</b>
+                  </li>
                 ` : ''}
-              </li>
-            `).join('')}
-          </ul>
+              `).join('')}
+            </ul>
+          </div>
         ` : ''}
       </div>
 
       ${outcomes.length ? `
         <div class="${css.outcomes}">
           ${outcomes.map(({ type, documentation = [] }) => `
-            <div>
-              <h3>${localize(type.name)}</h3>
+            <div title="${localize(type.name)}">
               <div class="${css.figures}">
                 ${documentation.map(item => {
                   const { _type, credits = [] } = item
@@ -104,7 +200,7 @@ module.exports = ({ project }) => {
                             <p>
                               ${credits.map(({ relation, roles = [] }) => `
                                 ${roles.length ? `
-                                  ${roles.map(role => localize(role.name)).join(', ')}: 
+                                  ${roles.map(role => localize(role.name)).join(', ')}:
                                 ` : ''}
                                 ${localize(relation.name)}
                               `.trim()).join(', ')}
