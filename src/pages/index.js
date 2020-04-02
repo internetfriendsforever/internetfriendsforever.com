@@ -11,10 +11,40 @@ const css = {
     left: 0;
     z-index: 10;
     width: max-content;
-    margin: 1em 0;
+    margin: 0rem;
+    padding: 0.75rem;
 
     summary {
       cursor: pointer;
+    }
+
+    h1 {
+      font-size: 1em;
+      margin: 0;
+      display: inline;
+      font-weight: normal;
+    }
+
+    a {
+      text-decoration: none;
+      color: dimgray;
+
+      :hover {
+        color: black;
+      }
+    }
+
+    &[open] {
+      min-height: 100vh;
+      background: linear-gradient(90deg, #f8f7f8, #f8f7f8, rgba(255,255,255,0.0), rgba(255,255,255,0.0), rgba(255,255,255,0.0));
+      background-size: 200% 100%;
+      animation: slideways 20s ease-in-out infinite;
+    }
+
+    @keyframes slideways {
+      0% { background-position: 0% 0% }
+      50% { background-position: 20% 0% }
+      100% { background-position: 0% 0% }
     }
 
     ul {
@@ -22,6 +52,8 @@ const css = {
       list-style: none;
 
       > li {
+        margin-bottom: 0.25em;
+
         > ul {
           display: flex;
           order: 0;
@@ -67,6 +99,8 @@ module.exports = async () => {
         project->{
           title,
           slug,
+          startDate,
+          endDate,
           outcomes[]{
             type->{
               name
@@ -120,10 +154,8 @@ module.exports = async () => {
     title: 'internetfriendsforever — design · research · communication',
     description: 'Daniel and Seb working today for your better tomorrow',
     content: `
-      <h1>internetfriendsforever</h1>
-      
       <details class="${css.index}">
-        <summary>Index</summary>
+        <summary><h1>index <b>internetfriendsforever</b></h1></summary>
         <nav>
           <ul>
             ${items.map(item => {
@@ -157,7 +189,7 @@ module.exports = async () => {
           </ul>
         </nav>
       </details>
-      
+
       ${items.map(projectItem).join('')}
     `
   })
