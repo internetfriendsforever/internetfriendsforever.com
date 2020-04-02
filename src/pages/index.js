@@ -56,15 +56,18 @@ const css = {
       100% { background-position: 0% 0% }
     }
 
-    ul {
+    nav, footer {
       padding: 0.75rem;
+    }
+
+    ul {
+      padding: 0;
       list-style: none;
 
       > li {
         margin-bottom: 0.25em;
 
         > ul {
-          padding: 0;
           display: flex;
           order: 0;
 
@@ -198,6 +201,13 @@ module.exports = async () => {
             }).join('')}
           </ul>
         </nav>
+
+        <footer>
+          <p>
+            Grønlandsleiret 39, 0190 Oslo <br />
+            anyone@internetfriendsforever.com
+          </p>
+        </footer>
       </details>
 
       ${items.map(projectItem).join('')}
