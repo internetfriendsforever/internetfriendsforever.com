@@ -7,11 +7,13 @@ const projectItem = require('../partials/projectItem')
 const css = {
   index: styles.add(`
     position: sticky;
-    top: 1em;
-    left: 1em;
+    top: 0;
+    left: 0;
     z-index: 10;
     width: max-content;
-    margin: 1em;
+    min-height: 100vh;
+    margin: 0rem;
+    padding: 0.75rem;
 
     summary {
       cursor: pointer;
@@ -24,11 +26,22 @@ const css = {
       font-weight: normal;
     }
 
+    a {
+      text-decoration: none;
+      color: dimgray;
+
+      :hover {
+        color: black;
+      }
+    }
+
     ul {
       padding: 0;
       list-style: none;
 
       > li {
+        margin-bottom: 0.25em;
+
         > ul {
           display: flex;
           order: 0;
