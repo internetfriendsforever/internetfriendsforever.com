@@ -29,6 +29,10 @@ module.exports = ({
           background: #f8f7f8;
           min-width: min-content;
           margin: 0;
+          font-size: 14px;
+          line-height: 1.3;
+          font-family: sans-serif;
+          color: #a8a8a8;
         }
 
         figure {
