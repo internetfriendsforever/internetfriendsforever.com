@@ -11,11 +11,14 @@ const css = {
     left: 0;
     z-index: 10;
     width: max-content;
+    max-width: 100vw;
     margin: 0rem;
 
     summary {
       cursor: pointer;
       padding: 0.75rem;
+      color: lightgreen;
+      outline-color: inherit;
     }
 
     h1 {
@@ -92,9 +95,9 @@ const css = {
 
               :hover,
               &.in-viewport {
-                background: dimgray;
-                color: white;
-                border-color: transparent;
+                background: lightgreen;
+                // color: white;
+                // border-color: transparent;
               }
             }
           }
