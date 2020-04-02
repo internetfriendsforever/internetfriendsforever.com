@@ -12,10 +12,10 @@ const css = {
     z-index: 10;
     width: max-content;
     margin: 0rem;
-    padding: 0.75rem;
 
     summary {
       cursor: pointer;
+      padding: 0.75rem;
     }
 
     h1 {
@@ -48,13 +48,14 @@ const css = {
     }
 
     ul {
-      padding: 0;
+      padding: 0.75rem;
       list-style: none;
 
       > li {
         margin-bottom: 0.25em;
 
         > ul {
+          padding: 0;
           display: flex;
           order: 0;
 
