@@ -11,14 +11,17 @@ const css = {
     flex-direction: column;
     width: max-content;
     margin: 6rem 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
   `),
 
   description: styles.add(`
     order: 2;
     position: sticky;
     left: 0;
-    width: max-content;
-    max-width: 100vw;
+    width: 100vw;
     padding: 0 0.75rem;
     box-sizing: border-box;
 
@@ -27,21 +30,17 @@ const css = {
     }
 
     h2 {
-      color: dimgray;
-      font-weight: 500;
       margin: 1em 0 0 0;
     }
 
     @media (min-width: 40em) {
-      width: auto;
-      min-width: 50em;
-      max-width: 50em;
       display: flex;
       flex-wrap: wrap;
 
       > div {
         flex: 1;
-        min-width: 50%;
+        width: 50%;
+        max-width: 30em;
       }
     }
   `),
@@ -57,12 +56,18 @@ const css = {
     display: flex;
     width: max-content;
     align-items: flex-end;
+    // border-bottom: 3px solid lightgreen;
+    // padding-bottom: 4px;
   `),
 
   figure: styles.add(`
-    margin-right: 2.5em;
-    max-width: 85vw;
     display: flex;
+    margin-right: 1.5em;
+    max-width: 120vw;
+
+    @media (min-width: 40em) {
+      max-width: 85vw;
+    }
 
     figcaption {
       font-size: 0.8em;
@@ -71,6 +76,7 @@ const css = {
       min-width: 10em;
       display: flex;
       align-items: flex-end;
+      margin-left: 0.75rem;
 
       p {
         margin-bottom: 0;
@@ -116,12 +122,16 @@ const css = {
       display: inline-block;
       margin-right: 0.75em;
       margin-top: 0.2em;
+
+      b {
+        font-weight: normal;
+        color: gray;
+      }
     }
   `)
 }
 
 module.exports = ({ project }) => {
-  console.log(project)
   const {
     title,
     startDate,
