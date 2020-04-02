@@ -11,7 +11,6 @@ const css = {
     left: 0;
     z-index: 10;
     width: max-content;
-    min-height: 100vh;
     margin: 0rem;
     padding: 0.75rem;
 
@@ -33,6 +32,19 @@ const css = {
       :hover {
         color: black;
       }
+    }
+
+    &[open] {
+      min-height: 100vh;
+      background: linear-gradient(90deg, #f8f7f8, #f8f7f8, rgba(255,255,255,0.0), rgba(255,255,255,0.0), rgba(255,255,255,0.0));
+      background-size: 200% 100%;
+      animation: slideways 20s ease-in-out infinite;
+    }
+
+    @keyframes slideways {
+      0% { background-position: 0% 0% }
+      50% { background-position: 20% 0% }
+      100% { background-position: 0% 0% }
     }
 
     ul {
