@@ -73,25 +73,25 @@ const css = {
               position: relative;
               display: block;
               flex: 1;
-              width: 0.75em;
-              height: 0.75em;
-              color: transparent;
-              overflow: hidden;
+              min-width: 0.6rem;
+              height: 0.6rem;
+              font-size: 0.65em;
+              line-height: 0.7rem;
+              text-align: center;
+              vertical-align: top;
+              color: inherit;
+              z-index: 1;
+              background: white;
+              border: 1px solid;
+              border-radius: 50%;
+              margin-right: 0.05em;
 
-              ::after {
-                content: "";
-                position: absolute;
-                top: 0;
-                left: 0;
-                bottom: 1px;
-                right: 1px;
-                background: white;
-                border: 1px solid black;
-              }
 
-              :hover::after,
-              &.in-viewport::after {
-                background: black;
+              :hover,
+              &.in-viewport {
+                background: dimgray;
+                color: white;
+                border-color: transparent;
               }
             }
           }
