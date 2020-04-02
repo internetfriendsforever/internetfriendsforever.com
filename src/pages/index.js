@@ -39,6 +39,15 @@ const css = {
       background: linear-gradient(90deg, #f8f7f8, #f8f7f8, rgba(255,255,255,0.0), rgba(255,255,255,0.0), rgba(255,255,255,0.0));
       background-size: 200% 100%;
       animation: slideways 20s ease-in-out infinite;
+
+      h1 {
+        ::after {
+          content: '✕';
+          float: right;
+          display: inline-block;
+          padding-right: 0.75rem;
+        }
+      }
     }
 
     @keyframes slideways {
@@ -47,15 +56,18 @@ const css = {
       100% { background-position: 0% 0% }
     }
 
-    ul {
+    nav, footer {
       padding: 0.75rem;
+    }
+
+    ul {
+      padding: 0;
       list-style: none;
 
       > li {
         margin-bottom: 0.25em;
 
         > ul {
-          padding: 0;
           display: flex;
           order: 0;
 
@@ -64,25 +76,25 @@ const css = {
               position: relative;
               display: block;
               flex: 1;
-              width: 0.75em;
-              height: 0.75em;
-              color: transparent;
-              overflow: hidden;
+              min-width: 0.6rem;
+              height: 0.6rem;
+              font-size: 0.65em;
+              line-height: 0.7rem;
+              text-align: center;
+              vertical-align: top;
+              color: inherit;
+              z-index: 1;
+              background: white;
+              border: 1px solid;
+              border-radius: 50%;
+              margin-right: 0.05em;
 
-              ::after {
-                content: "";
-                position: absolute;
-                top: 0;
-                left: 0;
-                bottom: 1px;
-                right: 1px;
-                background: white;
-                border: 1px solid black;
-              }
 
-              :hover::after,
-              &.in-viewport::after {
-                background: black;
+              :hover,
+              &.in-viewport {
+                background: dimgray;
+                color: white;
+                border-color: transparent;
               }
             }
           }
@@ -189,6 +201,13 @@ module.exports = async () => {
             }).join('')}
           </ul>
         </nav>
+
+        <footer>
+          <p>
+            Grønlandsleiret 39, 0190 Oslo <br />
+            anyone@internetfriendsforever.com
+          </p>
+        </footer>
       </details>
 
       ${items.map(projectItem).join('')}

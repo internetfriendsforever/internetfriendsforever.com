@@ -13,7 +13,7 @@ module.exports = ({
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
       <meta name="theme-color" content="#000" />
-      <link rel="icon" type="image/jpg" href="assets/favicon-2020.png">
+      <link rel="icon" type="image/jpg" href="assets/favicon.png">
       <meta property="og:description" content="${description}" />
       <meta property="og:url" content="https://internetfriendsforever.com/" />
       <meta property="og:image" content="https://internetfriendsforever.com/assets/favicon.jpg" />
