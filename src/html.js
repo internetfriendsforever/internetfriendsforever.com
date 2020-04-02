@@ -11,7 +11,7 @@ module.exports = ({
       <title>${title}</title>
       <meta name="description" content="${description}">
       <meta charset="utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
       <meta name="theme-color" content="#000" />
       <link rel="icon" type="image/jpg" href="assets/favicon-2020.png">
       <meta property="og:description" content="${description}" />
