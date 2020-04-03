@@ -25,14 +25,6 @@ const css = {
     padding: 0 0.75rem;
     box-sizing: border-box;
 
-    h2, h3 {
-      font-size: 1em;
-    }
-
-    h2 {
-      margin: 1em 0 0 0;
-    }
-
     @media (min-width: 40em) {
       display: flex;
       flex-wrap: wrap;
@@ -128,6 +120,19 @@ const css = {
         color: gray;
       }
     }
+  `),
+
+  us: styles.add(`
+    font-family: serif;
+    font-size: 1.2em;
+    line-height: 1.1em;
+
+    h2 {
+      margin: 0.75rem 0 0 0;
+      font-size: 1em;
+      font-weight: normal;
+      color: dimgray;
+    }
   `)
 }
 
@@ -154,7 +159,7 @@ module.exports = ({ project }) => {
   return `
     <section id="${slug}" class="${css.container}">
       <div class="${css.description}">
-        <div>
+        <div class="${css.us}">
           <h2>
             ${localize(title)}
           </h2>
