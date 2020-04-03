@@ -12,8 +12,8 @@ const css = {
     width: max-content;
     margin: 6rem 0;
 
-    &:first-child {
-      margin-top: 0;
+    &:first-of-type {
+      margin-top: 3rem;
     }
   `),
 
@@ -55,11 +55,7 @@ const css = {
   figure: styles.add(`
     display: flex;
     margin-right: 1.5em;
-    max-width: 120vw;
-
-    @media (min-width: 40em) {
-      max-width: 85vw;
-    }
+    max-width: 85vw;
 
     figcaption {
       font-size: 0.8em;
