@@ -71,7 +71,8 @@ const css = {
       width: min-content;
       min-width: 7rem;
       display: flex;
-      align-items: flex-end;
+      flex-direction: column;
+      justify-content: flex-end;
       margin-left: 0.75rem;
 
       p {
