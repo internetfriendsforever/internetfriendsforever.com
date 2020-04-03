@@ -65,6 +65,10 @@ const css = {
   figureWithCaption: styles.add(`
     max-width: calc(85vw + 7rem);
 
+    img, video {
+      max-width: 85vw;
+    }
+
     figcaption {
       font-size: 0.8em;
       flex: 0;
@@ -128,8 +132,7 @@ const css = {
   `),
 
   us: styles.add(`
-    font-family: serif;
-    font-size: 1.2em;
+    font-size: 1em;
     line-height: 1.1em;
 
     h2 {
