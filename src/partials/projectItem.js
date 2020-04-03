@@ -57,11 +57,19 @@ const css = {
     margin-right: 1.5em;
     max-width: 85vw;
 
+    img, video {
+      box-shadow: 0px 0px 1px lightgray;
+    }
+  `),
+
+  figureWithCaption: styles.add(`
+    max-width: calc(85vw + 7rem);
+
     figcaption {
       font-size: 0.8em;
       flex: 0;
       width: min-content;
-      min-width: 10em;
+      min-width: 7rem;
       display: flex;
       align-items: flex-end;
       margin-left: 0.75rem;
@@ -201,7 +209,7 @@ module.exports = ({ project }) => {
                   const caption = localize(item.caption)
 
                   return `
-                    <figure class="${css.figure}" id="${slug}-${documentationIndex++}">
+                    <figure class="${css.figure} ${caption || credits.length ? css.figureWithCaption : ''}" id="${slug}-${documentationIndex++}">
                       ${_type === 'video' ? video(item) : ''}
                       ${_type === 'image' ? image(item) : ''}
                       ${caption || credits.length ? `
