@@ -16,6 +16,7 @@ module.exports = item => {
       ${poster ? `poster="${poster.asset.url}"` : ''}
       controls
       loop
+      preload="metadata"
     ></video>
   `
 }
