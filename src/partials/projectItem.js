@@ -48,7 +48,7 @@ const css = {
     display: flex;
     width: max-content;
     align-items: flex-end;
-    // border-bottom: 3px solid lightgreen;
+    // border-bottom: 3px solid #1fc743;
     // padding-bottom: 4px;
   `),
 
@@ -91,6 +91,16 @@ const css = {
           }
         }
       }
+    }
+  `),
+
+  screenshotMobile: styles.add(`
+    background: #111;
+    padding: 2rem 0.75rem;
+    border-radius: 1.5rem;
+
+    img {
+      box-shadow: 0px 0px 1px #444;
     }
   `),
 
@@ -213,7 +223,7 @@ module.exports = ({ project }) => {
                   const caption = localize(item.caption)
 
                   return `
-                    <figure class="${css.figure} ${caption || credits.length ? css.figureWithCaption : ''}" id="${slug}-${documentationIndex++}">
+                    <figure class="${css.figure} ${caption || credits.length ? css.figureWithCaption : ''} ${item.imageType === 'screenshotMobile' ? css.screenshotMobile : ''}" id="${slug}-${documentationIndex++}">
                       ${_type === 'video' ? video(item) : ''}
                       ${_type === 'image' ? image(item) : ''}
                       ${caption || credits.length ? `

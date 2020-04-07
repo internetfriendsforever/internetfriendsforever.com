@@ -17,7 +17,7 @@ const css = {
     summary {
       cursor: pointer;
       padding: 0.75rem;
-      color: lightgreen;
+      color: #1fc743;
       outline-color: inherit;
     }
 
@@ -41,7 +41,6 @@ const css = {
       min-height: 100vh;
       background: linear-gradient(90deg, #f8f7f8, #f8f7f8, rgba(255,255,255,0.0), rgba(255,255,255,0.0), rgba(255,255,255,0.0));
       background-size: 200% 100%;
-      animation: slideways 20s ease-in-out infinite;
 
       h1 {
         ::after {
@@ -53,12 +52,6 @@ const css = {
       }
     }
 
-    @keyframes slideways {
-      0% { background-position: 0% 0% }
-      50% { background-position: 20% 0% }
-      100% { background-position: 0% 0% }
-    }
-
     nav, footer {
       padding: 0.75rem;
     }
@@ -68,36 +61,52 @@ const css = {
       list-style: none;
 
       > li {
-        margin-bottom: 0.25em;
+        // margin-bottom: 0.25em;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: flex-end;
+
+        > a {
+          display: block;
+          flex-basis: 75%;
+          flex-grow: 1;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
 
         > ul {
           display: flex;
           order: 0;
+          flex-basis: 25%;
+          flex-grow: 1;
+          flex-shrink: 0;
 
           > li {
             > a {
               position: relative;
               display: block;
               flex: 1;
-              min-width: 0.6rem;
-              height: 0.6rem;
-              font-size: 0.65em;
-              line-height: 0.7rem;
+              // min-width: 0.6rem;
+              // height: 0.6rem;
+              // font-size: 0.65em;
+              // line-height: 0.7rem;
               text-align: center;
               vertical-align: top;
-              color: inherit;
+              color: transparent;
               z-index: 1;
-              background: white;
-              border: 1px solid;
-              border-radius: 50%;
-              margin-right: 0.05em;
+              background: gray;
+              // border: 1px solid;
+              // border-radius: 50%;
+              // margin-right: 0.05em;
 
 
               :hover,
               &.in-viewport {
-                background: lightgreen;
-                // color: white;
-                // border-color: transparent;
+                background: #1fc743;
+                color: transparent;
+                border-color: transparent;
               }
             }
           }
@@ -127,6 +136,7 @@ module.exports = async () => {
               hotspot,
               caption,
               description,
+              imageType,
               credits[]{
                 relation->{
                   name
@@ -170,7 +180,7 @@ module.exports = async () => {
     title: 'internetfriendsforever — design · research · communication',
     description: 'Daniel and Seb working today for your better tomorrow',
     content: `
-      <details class="${css.index}">
+      <details class="${css.index}" open>
         <summary><h1>index <b>internetfriendsforever</b></h1></summary>
         <nav>
           <ul>
