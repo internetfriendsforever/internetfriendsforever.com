@@ -69,7 +69,7 @@ const css = {
 
         > a {
           display: block;
-          flex-basis: 66%;
+          flex-basis: 75%;
           flex-grow: 1;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -79,7 +79,7 @@ const css = {
         > ul {
           display: flex;
           order: 0;
-          flex-basis: 33%;
+          flex-basis: 25%;
           flex-grow: 1;
           flex-shrink: 0;
 
@@ -88,24 +88,24 @@ const css = {
               position: relative;
               display: block;
               flex: 1;
-              min-width: 0.6rem;
-              height: 0.6rem;
-              font-size: 0.65em;
-              line-height: 0.7rem;
+              // min-width: 0.6rem;
+              // height: 0.6rem;
+              // font-size: 0.65em;
+              // line-height: 0.7rem;
               text-align: center;
               vertical-align: top;
-              color: inherit;
+              color: transparent;
               z-index: 1;
-              background: white;
-              border: 1px solid;
-              border-radius: 50%;
-              margin-right: 0.05em;
+              background: dimgray;
+              // border: 1px solid;
+              // border-radius: 50%;
+              // margin-right: 0.05em;
 
 
               :hover,
               &.in-viewport {
                 background: #1fc743;
-                color: white;
+                color: transparent;
                 border-color: transparent;
               }
             }
