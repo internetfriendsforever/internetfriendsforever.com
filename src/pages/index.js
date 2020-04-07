@@ -88,18 +88,18 @@ const css = {
               position: relative;
               display: block;
               flex: 1;
-              // min-width: 0.6rem;
-              // height: 0.6rem;
-              // font-size: 0.65em;
-              // line-height: 0.7rem;
+              min-width: 0.6rem;
+              height: 0.6rem;
+              font-size: 0.65em;
+              line-height: 0.7rem;
               text-align: center;
               vertical-align: top;
               color: transparent;
               z-index: 1;
-              background: dimgray;
-              // border: 1px solid;
-              // border-radius: 50%;
-              // margin-right: 0.05em;
+              background: gray;
+              border: 1px solid;
+              border-radius: 50%;
+              margin-right: 0.05em;
 
 
               :hover,
