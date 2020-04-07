@@ -120,6 +120,7 @@ module.exports = async () => {
               hotspot,
               caption,
               description,
+              imageType,
               credits[]{
                 relation->{
                   name

@@ -21,7 +21,7 @@ module.exports = item => {
   const set = sources.map((src, i) => `${src} ${widths[i]}w`)
   const smallest = sources[0]
   const aspect = height / width
-  const maxHeight = 85 + (aspect - 1) * 30
+  const maxHeight = item.imageType === 'screenshotMobile' ? 80 : 85 + (aspect - 1) * 30
   const description = localize(item.description) || ''
 
   return `
