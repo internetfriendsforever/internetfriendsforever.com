@@ -6,7 +6,7 @@ const projectItem = require('../partials/projectItem')
 
 const css = {
   index: styles.add(`
-    position: sticky;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 10;
@@ -180,7 +180,7 @@ module.exports = async () => {
     title: 'internetfriendsforever — design · research · communication',
     description: 'Daniel and Seb working today for your better tomorrow',
     content: `
-      <details class="${css.index}" open>
+      <details class="${css.index}">
         <summary><h1>index <b>internetfriendsforever</b></h1></summary>
         <nav>
           <ul>
