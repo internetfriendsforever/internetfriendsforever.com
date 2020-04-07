@@ -41,7 +41,6 @@ const css = {
       min-height: 100vh;
       background: linear-gradient(90deg, #f8f7f8, #f8f7f8, rgba(255,255,255,0.0), rgba(255,255,255,0.0), rgba(255,255,255,0.0));
       background-size: 200% 100%;
-      animation: slideways 20s ease-in-out infinite;
 
       h1 {
         ::after {
@@ -51,12 +50,6 @@ const css = {
           padding-right: 0.75rem;
         }
       }
-    }
-
-    @keyframes slideways {
-      0% { background-position: 0% 0% }
-      50% { background-position: 20% 0% }
-      100% { background-position: 0% 0% }
     }
 
     nav, footer {
