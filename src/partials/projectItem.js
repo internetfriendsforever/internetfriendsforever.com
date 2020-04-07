@@ -48,7 +48,7 @@ const css = {
     display: flex;
     width: max-content;
     align-items: flex-end;
-    // border-bottom: 3px solid lightgreen;
+    // border-bottom: 3px solid #1fc743;
     // padding-bottom: 4px;
   `),
 

@@ -17,7 +17,7 @@ const css = {
     summary {
       cursor: pointer;
       padding: 0.75rem;
-      color: lightgreen;
+      color: #1fc743;
       outline-color: inherit;
     }
 
@@ -95,9 +95,9 @@ const css = {
 
               :hover,
               &.in-viewport {
-                background: lightgreen;
-                // color: white;
-                // border-color: transparent;
+                background: #1fc743;
+                color: white;
+                border-color: transparent;
               }
             }
           }
