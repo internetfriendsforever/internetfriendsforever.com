@@ -61,11 +61,27 @@ const css = {
       list-style: none;
 
       > li {
-        margin-bottom: 0.25em;
+        // margin-bottom: 0.25em;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: flex-end;
+
+        > a {
+          display: block;
+          flex-basis: 66%;
+          flex-grow: 1;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
 
         > ul {
           display: flex;
           order: 0;
+          flex-basis: 33%;
+          flex-grow: 1;
+          flex-shrink: 0;
 
           > li {
             > a {
@@ -164,7 +180,7 @@ module.exports = async () => {
     title: 'internetfriendsforever — design · research · communication',
     description: 'Daniel and Seb working today for your better tomorrow',
     content: `
-      <details class="${css.index}">
+      <details class="${css.index}" open>
         <summary><h1>index <b>internetfriendsforever</b></h1></summary>
         <nav>
           <ul>
