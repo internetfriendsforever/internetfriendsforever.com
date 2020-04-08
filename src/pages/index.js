@@ -61,11 +61,11 @@ const css = {
       list-style: none;
 
       > li {
-        // margin-bottom: 0.25em;
         display: flex;
         flex-direction: row-reverse;
         align-items: center;
         justify-content: flex-end;
+        margin-right: 1px;
 
         > a {
           display: block;
