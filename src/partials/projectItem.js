@@ -22,8 +22,9 @@ const css = {
     position: sticky;
     left: 0;
     width: 100vw;
-    padding: 0 0.75rem;
+    padding: 0 0.25rem;
     box-sizing: border-box;
+    line-height: 1.2;
 
     @media (min-width: 40em) {
       display: flex;
@@ -32,7 +33,7 @@ const css = {
       > div {
         flex: 1;
         width: 50%;
-        max-width: 30em;
+        max-width: 36em;
       }
     }
   `),
@@ -70,7 +71,7 @@ const css = {
     }
 
     figcaption {
-      font-size: 0.8em;
+      font-size: 0.75em;
       flex: 0;
       width: min-content;
       min-width: 7rem;
@@ -78,6 +79,7 @@ const css = {
       flex-direction: column;
       justify-content: flex-end;
       margin-left: 0.75rem;
+      line-height: 1.4;
 
       p {
         margin-bottom: 0;
@@ -125,14 +127,13 @@ const css = {
   `),
 
   relations: styles.add(`
-    margin-top: 0.75em;
+    margin-top: 1rem;
     padding: 0;
     list-style: none;
 
     li {
       display: inline-block;
       margin-right: 0.75em;
-      margin-top: 0.2em;
 
       b {
         font-weight: normal;
@@ -142,15 +143,18 @@ const css = {
   `),
 
   us: styles.add(`
-    font-size: 1em;
-    line-height: 1.1em;
+    padding: 0 0.5rem;
 
     h2 {
-      margin: 0.75rem 0 0 0;
+      margin: 1rem 0 0 0;
       font-size: 1em;
       font-weight: normal;
       color: dimgray;
     }
+  `),
+
+  them: styles.add(`
+    padding: 0 0.5rem;
   `)
 }
 
@@ -198,7 +202,7 @@ module.exports = ({ project }) => {
         </div>
 
         ${relations.length ? `
-          <div>
+          <div class="${css.them}">
             <ul class="${css.relations}" title="${localize('Relations')}">
               ${relations.map(({ relation, roles = [] }) => `
                 ${roles.length ? `
