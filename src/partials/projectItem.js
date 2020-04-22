@@ -71,7 +71,7 @@ const css = {
     }
 
     figcaption {
-      font-size: 0.8em;
+      font-size: 0.75em;
       flex: 0;
       width: min-content;
       min-width: 7rem;
