@@ -23,6 +23,7 @@ module.exports = ({
       <style>
         html {
           scroll-behavior: smooth;
+          font-size: 14px;
         }
 
         body {
