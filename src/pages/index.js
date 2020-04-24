@@ -139,7 +139,8 @@ module.exports = async () => {
               imageType,
               credits[]{
                 relation->{
-                  name
+                  name,
+                  websiteUrl
                 },
                 roles[]->{
                   name
@@ -163,7 +164,8 @@ module.exports = async () => {
           },
           relations[]{
             relation->{
-              name
+              name,
+              websiteUrl
             },
             roles[]->{
               name

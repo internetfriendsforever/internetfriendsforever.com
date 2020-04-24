@@ -158,6 +158,12 @@ const css = {
   `)
 }
 
+const renderRelation = ({ name, websiteUrl }) => websiteUrl ? `
+  <a href="${websiteUrl}" target="_blank" rel="noopener">
+    ${localize(name)}
+  </a>
+` : localize(name)
+
 module.exports = ({ project }) => {
   const {
     title,
@@ -208,7 +214,9 @@ module.exports = ({ project }) => {
                 ${roles.length ? `
                   <li>
                     ${sentenceCase(roles.map(role => localize(role.name)).join(', '))}
-                    <b>${localize(relation.name)}</b>
+                    <b>
+                      ${renderRelation(relation)}
+                    </b>
                   </li>
                 ` : ''}
               `).join('')}
@@ -239,7 +247,7 @@ module.exports = ({ project }) => {
                                 ${roles.length ? `
                                   ${roles.map(role => localize(role.name)).join(', ')}:
                                 ` : ''}
-                                ${localize(relation.name)}
+                                ${renderRelation(relation)}
                               `.trim()).join(', ')}
                             </p>
                           ` : ''}
