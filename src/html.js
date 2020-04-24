@@ -1,96 +1,51 @@
-const styles = require('@cyberspace/styles')
 const pretty = require('pretty')
 
-const css = {
-  body: styles.add(`
-    @font-face {
-      font-family: 'IFF Bruce'; /* Custom typeface by Ellmer Stefan */
-      src: url('assets/IFFBruce.ttf') format('truetype');
-      font-weight: 0 100;
-    }
-
-    @supports (font-variation-settings: normal) {
-      & {
-        font-family: 'IFF Bruce', sans-serif;
-        letter-spacing: -0.009em;
-      }
-    }
-
-    margin: 0;
-    font-family: sans-serif;
-    font-size: 14px;
-    line-height: 1.3;
-    font-feature-settings: 'ss02' 0, 'ss03' 1;
-    font-variation-settings: 'wght' 43;
-    background: rgb(10, 9, 11);
-    color: white;
-
-    @media (min-width: 600px) {
-      font-size: 15px;
-    }
-
-    & ::selection {
-      background-color: rgb(246, 199, 129);
-      color: rgb(10, 9, 11);
-    }
-
-    a {
-      color: rgb(246, 199, 129);
-      text-decoration: none;
-
-      :hover {
-        text-decoration: underline;
-      }
-    }
-  `)
-}
-
 module.exports = ({
-  statusCode = 200,
   title = '',
   description = '',
   content
-}) => ({
-  statusCode,
-  headers: {
-    'Content-Type': 'text/html',
-    'Cache-Control': 'max-age=31557600'
-  },
-  body: pretty(`
-    <!doctype html>
-    <html lang="no">
-      <head>
-        <title>${title}</title>
-        <meta name="description" content="${description}">
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000" />
-        <link rel="icon" type="image/jpg" href="/assets/favicon.jpg">
-        <meta property="og:description" content="${description}" />
-        <meta property="og:url" content="https://internetfriendsforever.com/" />
-        <meta property="og:image" content="https://internetfriendsforever.com/assets/favicon.jpg" />
-        <meta property="og:image:width" content="1024" />
-        <meta property="og:image:height" content="1024" />
-        <link rel="stylesheet" type="text/css" href="/styles.css?${Math.random()}">
-      </head>
-      <body class="${css.body}">
-        ${content}
+}) => pretty(`
+  <!DOCTYPE html>
+  <html lang="nb">
+    <head>
+      <title>${title}</title>
+      <meta name="description" content="${description}">
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+      <meta name="theme-color" content="#000" />
+      <link rel="icon" type="image/jpg" href="assets/favicon.png">
+      <meta property="og:description" content="${description}" />
+      <meta property="og:url" content="https://internetfriendsforever.com/" />
+      <meta property="og:image" content="https://internetfriendsforever.com/assets/favicon.jpg" />
+      <meta property="og:image:width" content="1024" />
+      <meta property="og:image:height" content="1024" />
+      <link rel="stylesheet" type="text/css" href="styles.css" />
+      <style>
+        html {
+          scroll-behavior: smooth;
+          font-size: 14px;
+        }
 
-        <script>
-          Array.from(document.querySelectorAll('figure img')).forEach(image => {
-            if (image.getAttribute('data-allow-upscaling') === "false") {
-              image.style.maxWidth = parseInt(image.getAttribute('width'), 10) / window.devicePixelRatio + 'px'
-            }
-          })
-        </script>
+        body {
+          background: #f8f7f8;
+          min-width: min-content;
+          margin: 0;
+          font-size: 14px;
+          line-height: 1.3;
+          font-family: sans-serif;
+          color: #a8a8a8;
+        }
 
-        <script src="https://unpkg.com/balance-text@3.3.0/balancetext.js"></script>
-        <script>
-          balanceText(Array.from(document.querySelectorAll('figure figcaption p')))
-        </script>
-      </body>
-    </html>
-  `, {
-    ocd: true
-  })
+        figure {
+          margin: 0;
+        }
+      </style>
+    </head>
+    <body>
+      ${content}
+      <script src="assets/index.js"></script>
+    </body>
+  </html>
+`, {
+  ocd: true
 })

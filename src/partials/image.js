@@ -1,18 +1,17 @@
 const styles = require('@cyberspace/styles')
-const sanity = require('../../sanity')
+const sanity = require('../sanity')
+const { localize } = require('../i18n')
 
 const min = 320
 const interval = 320
 
 const css = styles.add(`
   display: block;
-  width: 100%;
-  height: auto;
-  margin: 0 auto;
+  max-width: 100%;
 `)
 
 module.exports = item => {
-  const { asset, allowUpscaling = false } = item
+  const { asset } = item
   const { width, height } = asset.metadata.dimensions
   const max = width
   const range = max - min
@@ -21,15 +20,17 @@ module.exports = item => {
   const sources = widths.map(width => sanity.image(item).width(width).auto('format').url())
   const set = sources.map((src, i) => `${src} ${widths[i]}w`)
   const smallest = sources[0]
+  const aspect = height / width
+  const maxHeight = item.imageType === 'screenshotMobile' ? 80 : 85 + (aspect - 1) * 30
+  const description = localize(item.description) || ''
 
   return `
     <img
       class="${css}"
-      width="${width}"
-      height="${height}"
       src="${smallest}"
       srcSet="${set}"
       sizes="100vw"
-      data-allow-upscaling=${allowUpscaling}
+      alt="${description.replace(/"/g, '&quot;')}"
+      style="max-height: ${maxHeight}vh;"
     />`
 }
