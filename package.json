@@ -13,19 +13,19 @@
   "dependencies": {
     "@cyberspace/styles": "^0.3.20",
     "@sanity/block-content-to-html": "^1.3.8",
-    "@sanity/client": "^0.141.6",
-    "@sanity/image-url": "^0.140.12",
+    "@sanity/client": "^1.149.7",
+    "@sanity/image-url": "^0.140.18",
     "pretty": "^2.0.0"
   },
   "devDependencies": {
     "chokidar-cli": "^2.1.0",
     "concurrently": "^5.1.0",
-    "eslint": "^6.1.0",
-    "eslint-config-standard": "^13.0.1",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-node": "^9.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-standard": "^4.0.1",
     "http-server": "^0.12.1"
   }
 }
