@@ -168,6 +168,7 @@ module.exports = async () => {
               websiteUrl
             },
             roles[]->{
+              _id,
               name
             }
           }
