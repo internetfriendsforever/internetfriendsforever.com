@@ -1,6 +1,6 @@
 const styles = require('@cyberspace/styles')
 const { localize } = require('../i18n')
-const { sentenceCase, getYear } = require('../utils')
+const { getYear } = require('../utils')
 const image = require('./image')
 const video = require('./video')
 const sanity = require('../sanity')
@@ -158,11 +158,9 @@ const css = {
   `)
 }
 
-const renderRelation = ({ name, websiteUrl }) => websiteUrl ? `
-  <a href="${websiteUrl}" target="_blank" rel="noopener">
-    ${localize(name)}
-  </a>
-` : localize(name)
+const renderRelation = ({ name, websiteUrl }) => websiteUrl ? (
+  `<a href="${websiteUrl}" target="_blank" rel="noopener">${localize(name)}</a>`
+) : localize(name)
 
 module.exports = ({ project }) => {
   const {
@@ -183,6 +181,21 @@ module.exports = ({ project }) => {
   const slug = localize(project.slug).current
 
   let documentationIndex = 0
+
+  const relationsByRole = relations.reduce((groups, { relation, roles }) => {
+    roles.forEach(role => {
+      let group = groups.find(({ _id }) => _id === role._id)
+
+      if (!group) {
+        group = { ...role, relations: [] }
+        groups.push(group)
+      }
+
+      group.relations.push(relation)
+    })
+
+    return groups
+  }, [])
 
   return `
     <section id="${slug}" class="${css.container}">
@@ -207,15 +220,15 @@ module.exports = ({ project }) => {
           ` : ''}
         </div>
 
-        ${relations.length ? `
+        ${relationsByRole.length ? `
           <div class="${css.them}">
             <ul class="${css.relations}" title="${localize('Relations')}">
-              ${relations.map(({ relation, roles = [] }) => `
+              ${relationsByRole.map(role => `
                 ${roles.length ? `
                   <li>
-                    ${sentenceCase(roles.map(role => localize(role.name)).join(', '))}
+                    ${localize(role.name)}
                     <b>
-                      ${renderRelation(relation)}
+                      ${role.relations.map(renderRelation).join(', ')}
                     </b>
                   </li>
                 ` : ''}
