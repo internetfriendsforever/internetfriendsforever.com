@@ -120,6 +120,7 @@ module.exports = async () => {
   const catalogue = await sanity.client.fetch(`
     *[_id == "9c2b5dbf-5447-4d2d-ae5a-a84b660cd536"]{
       _id,
+      colophon,
       items[_type match 'projectItem']{
         project->{
           title,
@@ -219,10 +220,7 @@ module.exports = async () => {
         </nav>
 
         <footer>
-          <p>
-            Grønlandsleiret 39, 0190 Oslo <br />
-            anyone@internetfriendsforever.com
-          </p>
+          ${sanity.html(catalogue.colophon)}
         </footer>
       </details>
 
