@@ -49,8 +49,6 @@ const css = {
     display: flex;
     width: max-content;
     align-items: flex-end;
-    // border-bottom: 3px solid hsla(133, 73%, 45%, 1);
-    // padding-bottom: 4px;
   `),
 
   figure: styles.add(`
