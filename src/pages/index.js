@@ -28,12 +28,7 @@ const css = {
     }
 
     a {
-      text-decoration: none;
       color: dimgray;
-
-      :hover {
-        color: black;
-      }
     }
 
     &[open] {
