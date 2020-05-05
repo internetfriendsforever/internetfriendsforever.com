@@ -22,7 +22,7 @@ module.exports = ({
       <link rel="stylesheet" type="text/css" href="styles.css" />
       <style>
         html {
-          scroll-behavior: smooth;
+          /*scroll-behavior: smooth;*/
           font-size: 14px;
         }
 

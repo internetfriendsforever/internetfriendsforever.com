@@ -10,7 +10,7 @@ const css = {
     display: flex;
     flex-direction: column;
     width: max-content;
-    margin: 6rem 0;
+    margin: 4rem 0;
 
     &:first-of-type {
       margin-top: 3rem;
@@ -56,7 +56,6 @@ const css = {
   figure: styles.add(`
     display: flex;
     margin-right: 1.5em;
-    max-width: 85vw;
 
     img, video {
       box-shadow: 0px 0px 1px lightgray;
@@ -64,12 +63,6 @@ const css = {
   `),
 
   figureWithCaption: styles.add(`
-    max-width: calc(85vw + 7rem);
-
-    img, video {
-      max-width: 85vw;
-    }
-
     figcaption {
       font-size: 0.75em;
       flex: 0;

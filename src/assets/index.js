@@ -39,6 +39,52 @@ Array.from(figures).forEach(figure => {
   observer.observe(figure)
 })
 
+// Remove thumbnail images
+const images = document.querySelectorAll('figure img')
+
+Array.from(images).forEach(image => {
+  image.addEventListener('load', () => {
+    image.removeAttribute('style')
+  })
+})
+
+// Size images
+// const images = document.querySelectorAll('figure img')
+
+// // const maxWidth = window.innerWidth * 0.75
+// // const maxHeight = window.innerHeight * 0.75
+// const maxArea = window.innerWidth * window.innerHeight * 0.4
+
+// Array.from(images).forEach(image => {
+//   const widths = image.getAttribute('data-widths').split(',').map(value => parseInt(value, 10))
+//   const heights = image.getAttribute('data-heights').split(',').map(value => parseInt(value, 10))
+//   const areas = widths.map((width, i) => width * heights[i])
+//   const availableAreas = areas.filter((area, i) => i === 0 || area < maxArea)
+//   const areaIndex = availableAreas.length - 1
+//   const width = widths[areaIndex]
+//   const height = heights[areaIndex]
+
+//   // const availableWidths = widths.filter((width, i) => i === 0 || (width / window.devicePixelRatio) < maxWidth)
+//   // const availableHeights = heights.filter((height, i) => i === 0 || (height / window.devicePixelRatio) < maxHeight)
+//   // const sizeIndex = Math.min(availableWidths.length - 1, availableHeights.length - 1)
+//   // const width = availableWidths[sizeIndex]
+//   // const height = availableHeights[sizeIndex]
+
+//   image.setAttribute('width', width)
+//   image.setAttribute('height', height)
+
+//   // image.setAttribute('src', '')
+
+//   // console.log(widths)
+//   // console.log(image)
+// })
+
+// window.visualViewport.addEventListener('resize', function (event) {
+//   console.log(window.visualViewport.scale)
+// })
+
+// console.log(window.visualViewport)
+
 // Keyboard navigation
 // window.addEventListener('keydown', event => {
 //   if (!event.metaKey && !event.ctrlKey && !event.altKey) {
