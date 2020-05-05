@@ -29,9 +29,9 @@ module.exports = item => {
       class="${css}"
       src="${item.asset.url}"
       ${poster ? `poster="${poster}"` : ''}
+      preload="metadata"
       controls
       loop
-      preload="metadata"
     ></video>
   `
 }
