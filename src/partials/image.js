@@ -72,7 +72,7 @@ module.exports = item => {
         return formatsReversed.map(format => {
           const query = [
             `${format.query || 'all'} and (min-resolution: ${scale}x)`,
-            `${format.query || 'all'} and (-webkit-min-device-pixel-ratio: ${scale}x)`
+            `${format.query || 'all'} and (-webkit-min-device-pixel-ratio: ${scale})`
           ].join(',')
 
           const width = format.size.width * scale
