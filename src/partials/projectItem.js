@@ -132,13 +132,21 @@ const css = {
     padding: 0;
     list-style: none;
 
-    li {
-      display: inline-block;
-      margin-right: 0.75em;
+    > li {
+      border-top: 1px solid;
+      margin-bottom: 0.25rem;
+      display: flex;
 
       b {
         font-weight: normal;
-        color: gray;
+        width: 33.333%;
+        max-width: 10em;
+      }
+
+      > ul {
+        list-style: none;
+        padding: 0;
+        width: 66.666%;
       }
     }
   `),
@@ -147,6 +155,7 @@ const css = {
     padding: 0 0.5rem;
 
     h2 {
+      border-top: 1px solid;
       margin: 1rem 0 0 0;
       font-size: 1em;
       font-weight: normal;
@@ -162,6 +171,8 @@ const css = {
 const renderRelation = ({ name, websiteUrl }) => websiteUrl ? (
   `<a href="${websiteUrl}" target="_blank" rel="noopener">${localize(name)}</a>`
 ) : localize(name)
+
+const sortByName = (a, b) => (localize(a.name) > localize(b.name)) ? 1 : -1
 
 module.exports = ({ project }) => {
   const {
@@ -224,13 +235,14 @@ module.exports = ({ project }) => {
         ${relationsByRole.length ? `
           <div class="${css.them}">
             <ul class="${css.relations}" title="${localize('Relations')}">
-              ${relationsByRole.map(role => `
+              ${relationsByRole.sort(sortByName).map(role => `
                 ${roles.length ? `
                   <li>
-                    ${localize(role.name)}
-                    <b>
-                      ${role.relations.map(renderRelation).join(', ')}
-                    </b>
+                    <b>${localize(role.name)}</b>
+
+                    <ul>
+                      ${role.relations.sort(sortByName).map(renderRelation).map(r => `<li>${r}</li>`).join('')}
+                    </ul>
                   </li>
                 ` : ''}
               `).join('')}
