@@ -49,7 +49,7 @@ const css = {
     display: flex;
     width: max-content;
     align-items: flex-end;
-    // border-bottom: 3px solid #1fc743;
+    // border-bottom: 3px solid hsla(133, 73%, 45%, 1);
     // padding-bottom: 4px;
   `),
 
@@ -86,10 +86,11 @@ const css = {
 
         &:first-child {
           ::before {
+            display: block;
             font-size: 0.7em;
             vertical-align: middle;
             content: '◀ ';
-            margin-right: 0.3em;
+            margin-bottom: 0.3rem;
           }
         }
       }

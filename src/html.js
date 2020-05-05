@@ -39,6 +39,17 @@ module.exports = ({
         figure {
           margin: 0;
         }
+
+        a {
+          text-decoration: none;
+          color: hsla(133, 73%, 38%, 1);
+        }
+        a:hover {
+          color: hsla(133, 73%, 45%, 1);
+        }
+        a:active {
+          color: hsla(133, 80%, 30%, 1);
+        }
       </style>
     </head>
     <body>

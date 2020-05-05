@@ -17,7 +17,7 @@ const css = {
     summary {
       cursor: pointer;
       padding: 0.75rem;
-      color: #1fc743;
+      color: hsla(133, 73%, 45%, 1);
       outline-color: inherit;
     }
 
@@ -25,16 +25,10 @@ const css = {
       font-size: 1em;
       margin: 0;
       display: inline;
-      font-weight: normal;
     }
 
     a {
-      text-decoration: none;
       color: dimgray;
-
-      :hover {
-        color: black;
-      }
     }
 
     &[open] {
@@ -104,7 +98,7 @@ const css = {
 
               :hover,
               &.in-viewport {
-                background: #1fc743;
+                background: hsla(133, 73%, 45%, 1);
                 color: transparent;
                 border-color: transparent;
               }
@@ -185,7 +179,7 @@ module.exports = async () => {
     description: 'Daniel and Seb working today for your better tomorrow',
     content: `
       <details class="${css.index}">
-        <summary><h1>index <b>internetfriendsforever</b></h1></summary>
+        <summary><h1>internetfriendsforever</h1></summary>
         <nav>
           <ul>
             ${items.map(item => {
