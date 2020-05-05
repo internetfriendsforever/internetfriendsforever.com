@@ -153,7 +153,7 @@ const css = {
     padding: 0 0.5rem;
 
     h2 {
-      border-top: 1px solid;
+      border-top: 1px solid #a8a8a8;
       margin: 1rem 0 0 0;
       font-size: 1em;
       font-weight: normal;
