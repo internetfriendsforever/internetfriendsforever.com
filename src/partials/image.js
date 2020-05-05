@@ -16,9 +16,6 @@ module.exports = item => {
   const { aspectRatio } = dimensions
   const description = localize(item.description) || ''
 
-  // const resolutionQueryString = scale => `((min-resolution: ${scale}x) or (-webkit-min-device-pixel-ratio: ${scale}x))`
-  // const resolutionQueryString = scale => `(min-resolution: ${scale}x)`
-
   const sizeFromArea = area => ({
     width: Math.round(Math.sqrt(area * aspectRatio)),
     height: Math.round(Math.sqrt(area / aspectRatio))
@@ -34,22 +31,6 @@ module.exports = item => {
     size: sizeFromArea(1000 * 1000)
   }]
 
-  // for (let scale = 1; scale <= 4; scale++) {
-  //   formats.push({
-  //     query: `${resolutionQueryString(scale)}`,
-  //     layout: getImageSize(250, 1),
-  //     image: getImageSize(250, scale)
-  //   }, {
-  //     query: `${resolutionQueryString(scale)} and (min-width: 800px)`,
-  //     layout: getImageSize(500, 1),
-  //     image: getImageSize(500, scale)
-  //   }, {
-  //     query: `${resolutionQueryString(scale)} and (min-width: 1600px)`,
-  //     layout: getImageSize(1000, 1),
-  //     image: getImageSize(1000, scale)
-  //   })
-  // }
-
   const formatsReversed = [...formats].reverse()
 
   const getImageUrl = (width, height) => sanity.image(item)
@@ -58,8 +39,6 @@ module.exports = item => {
     .quality(85)
     .auto('format')
     .url()
-
-  // return `<pre>${JSON.stringify(formats, null, 2)}</pre>`
 
   const defaultFormat = formats[0]
   const defaultSrc = getImageUrl(defaultFormat.size.width, defaultFormat.size.height)
@@ -105,31 +84,4 @@ module.exports = item => {
       </style>
     </picture>
   `
-
-  // return `
-  //   <picture class="${css.container} image">
-  //     ${Array(5).fill().map((_, i) => {
-  //       const scale = 6 - i
-  //       return `<source media="(min-resolution: ${scale}x), (-webkit-min-device-pixel-ratio: ${scale}x)" srcset="${getImageUrl(scale)} " />`
-  //     }).join('')}
-
-  //     <img
-  //       id="${asset._id}"
-  //       src="${getImageUrl()}"
-  //       width="${width}"
-  //       height="${height}"
-  //       alt="${description.replace(/"/g, '&quot;')}"
-  //       style="background-image: url(${lqip})"
-  //       loading="lazy"
-  //     >
-
-  //     <style>
-  //       @media (min-width: 600px) {
-  //         #${id} {
-  //           width: 
-  //         }
-  //       }
-  //     </style>
-  //   </picture>
-  // `
 }
