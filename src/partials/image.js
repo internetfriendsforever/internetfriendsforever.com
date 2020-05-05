@@ -17,41 +17,38 @@ module.exports = item => {
   const description = localize(item.description) || ''
 
   // const resolutionQueryString = scale => `((min-resolution: ${scale}x) or (-webkit-min-device-pixel-ratio: ${scale}x))`
-  const resolutionQueryString = scale => `(min-resolution: ${scale}x)`
+  // const resolutionQueryString = scale => `(min-resolution: ${scale}x)`
 
-  const scaleFit = (maxWidth, maxHeight, scale) => {
-    let width = maxWidth
-    let height = width / aspectRatio
+  const sizeFromArea = area => ({
+    width: Math.round(Math.sqrt(area * aspectRatio)),
+    height: Math.round(Math.sqrt(area / aspectRatio))
+  })
 
-    if (aspectRatio < maxWidth / maxHeight) {
-      height = maxHeight
-      width = height * aspectRatio
-    }
+  const formats = [{
+    size: sizeFromArea(250 * 250)
+  }, {
+    query: '(min-width: 800px)',
+    size: sizeFromArea(500 * 500)
+  }, {
+    query: '(min-width: 1600px)',
+    size: sizeFromArea(1000 * 1000)
+  }]
 
-    return {
-      width: Math.round(width * scale),
-      height: Math.round(height * scale)
-    }
-  }
-
-  // Formats ordered by specificity ascending (least specific first)
-  const formats = []
-
-  for (let scale = 1; scale <= 1; scale++) {
-    formats.push({
-      query: `${resolutionQueryString(scale)}`,
-      ...scaleFit(250, 250, scale)
-    }
-    , {
-      query: `${resolutionQueryString(scale)} and (max-aspect-ratio: 2/3)`,
-      ...scaleFit(250, 500, scale)
-    }
-    , {
-      query: `${resolutionQueryString(scale)} and (min-aspect-ratio: 3/2)`,
-      ...scaleFit(500, 250, scale)
-    }
-    )
-  }
+  // for (let scale = 1; scale <= 4; scale++) {
+  //   formats.push({
+  //     query: `${resolutionQueryString(scale)}`,
+  //     layout: getImageSize(250, 1),
+  //     image: getImageSize(250, scale)
+  //   }, {
+  //     query: `${resolutionQueryString(scale)} and (min-width: 800px)`,
+  //     layout: getImageSize(500, 1),
+  //     image: getImageSize(500, scale)
+  //   }, {
+  //     query: `${resolutionQueryString(scale)} and (min-width: 1600px)`,
+  //     layout: getImageSize(1000, 1),
+  //     image: getImageSize(1000, scale)
+  //   })
+  // }
 
   const formatsReversed = [...formats].reverse()
 
@@ -65,29 +62,46 @@ module.exports = item => {
   // return `<pre>${JSON.stringify(formats, null, 2)}</pre>`
 
   const defaultFormat = formats[0]
-  const defaultWidth = defaultFormat.width
-  const defaultHeight = defaultFormat.height
-  const defaultSrc = getImageUrl(defaultWidth, defaultHeight)
+  const defaultSrc = getImageUrl(defaultFormat.size.width, defaultFormat.size.height)
 
   return `
     <picture class="${css.container} image">
-      ${formatsReversed.map(format => `
-        <source media="${format.query}" srcset="${getImageUrl(format.width, format.height)}" />
-      `).join('')}
+      ${Array(4).fill().flatMap((_, i) => {
+        const scale = 4 - i
+
+        return formatsReversed.map(format => {
+          const query = [
+            `${format.query || 'all'} and (min-resolution: ${scale}x)`,
+            `${format.query || 'all'} and (-webkit-min-device-pixel-ratio: ${scale}x)`
+          ].join(',')
+
+          const width = format.size.width * scale
+          const height = format.size.height * scale
+          const src = getImageUrl(width, height)
+
+          return `<source media="${query}" srcset="${src}" />`
+        })
+      }).join('')}
 
       <img
         id="${asset._id}"
         src="${defaultSrc}"
+        width="${defaultFormat.size.width}"
+        height="${defaultFormat.size.height}"
         alt="${description.replace(/"/g, '&quot;')}"
         style="background-image: url(${lqip})"
         loading="lazy"
       >
 
       <style>
-        @media (min-width: 600px) {
-          #${asset._id} {
+        ${formats.filter(format => format.query).map(format => `
+          @media ${format.query} {
+            #${asset._id} {
+              width: ${format.size.width}px;
+              height: ${format.size.height}px;
+            }
           }
-        }
+        `).join('')}
       </style>
     </picture>
   `
