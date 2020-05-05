@@ -10,7 +10,7 @@ const css = {
     display: flex;
     flex-direction: column;
     width: max-content;
-    margin: 4rem 0;
+    margin: 6rem 0;
 
     &:first-of-type {
       margin-top: 3rem;
