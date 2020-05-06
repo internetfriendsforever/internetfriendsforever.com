@@ -1,22 +1,37 @@
 const styles = require('@cyberspace/styles')
+const sanity = require('../sanity')
 
 const css = styles.add(`
   display: block;
-  max-height: 70vh;
-  max-width: 90vw;
+
+  @media (min-width: 800px) {
+    width: 600px;
+  }
+
+  @media (min-width: 1600px) {
+    width: 1000px;
+  }
 `)
 
 module.exports = item => {
-  const { poster } = item
+  let poster
+
+  if (item.poster) {
+    poster = sanity.image(item.poster)
+      .quality(85)
+      .auto('format')
+      .url()
+  }
 
   return `
     <video
+      width="300"
       class="${css}"
       src="${item.asset.url}"
-      ${poster ? `poster="${poster.asset.url}"` : ''}
+      ${poster ? `poster="${poster}"` : ''}
+      preload="metadata"
       controls
       loop
-      preload="metadata"
     ></video>
   `
 }

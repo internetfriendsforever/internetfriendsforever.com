@@ -147,8 +147,10 @@ module.exports = async () => {
                 }
               },
               asset->{
+                _id,
                 url,
                 metadata{
+                  lqip,
                   dimensions
                 }
               }

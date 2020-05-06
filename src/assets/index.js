@@ -39,6 +39,15 @@ Array.from(figures).forEach(figure => {
   observer.observe(figure)
 })
 
+// Remove thumbnail images
+const images = document.querySelectorAll('figure img')
+
+Array.from(images).forEach(image => {
+  image.addEventListener('load', () => {
+    image.removeAttribute('style')
+  })
+})
+
 // Keyboard navigation
 // window.addEventListener('keydown', event => {
 //   if (!event.metaKey && !event.ctrlKey && !event.altKey) {
