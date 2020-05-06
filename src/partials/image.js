@@ -39,20 +39,21 @@ module.exports = item => {
 
   const formatsReversed = [...formats].reverse()
 
-  const getImageUrl = (width, height) => sanity.image(item)
-    .width(width)
-    .height(height)
+  const getImageUrl = (size, scale = 1) => sanity.image(item)
+    .width(size.width)
+    .height(size.height)
     .quality(85)
     .auto('format')
+    .dpr(scale)
     .url()
 
   const defaultFormat = formats[0]
-  const defaultSrc = getImageUrl(defaultFormat.size.width, defaultFormat.size.height)
+  const defaultSrc = getImageUrl(defaultFormat.size)
 
   return `
     <picture class="${css.container} image">
-      ${Array(4).fill().flatMap((_, i) => {
-        const scale = 4 - i
+      ${Array(3).fill().flatMap((_, i) => {
+        const scale = 3 - i
 
         return formatsReversed.map(format => {
           const query = [
@@ -60,9 +61,7 @@ module.exports = item => {
             `${format.query || 'all'} and (-webkit-min-device-pixel-ratio: ${scale})`
           ].join(',')
 
-          const width = format.size.width * scale
-          const height = format.size.height * scale
-          const src = getImageUrl(width, height)
+          const src = getImageUrl(format.size, scale)
 
           return `<source media="${query}" srcset="${src}" />`
         })
