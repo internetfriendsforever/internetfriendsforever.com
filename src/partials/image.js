@@ -11,10 +11,16 @@ const css = {
 }
 
 module.exports = item => {
-  const { asset } = item
+  const { asset, imageType } = item
   const { dimensions, lqip } = asset.metadata
   const { aspectRatio } = dimensions
   const description = localize(item.description) || ''
+
+  let scale = 1
+
+  if (imageType === 'screenshotMobile') {
+    scale = 0.5
+  }
 
   const sizeFromArea = area => ({
     width: Math.round(Math.sqrt(area * aspectRatio)),
@@ -22,13 +28,13 @@ module.exports = item => {
   })
 
   const formats = [{
-    size: sizeFromArea(250 * 250)
+    size: sizeFromArea(250 * 250 * scale)
   }, {
     query: '(min-width: 800px)',
-    size: sizeFromArea(500 * 500)
+    size: sizeFromArea(500 * 500 * scale)
   }, {
     query: '(min-width: 1600px)',
-    size: sizeFromArea(1000 * 1000)
+    size: sizeFromArea(1000 * 1000 * scale)
   }]
 
   const formatsReversed = [...formats].reverse()
