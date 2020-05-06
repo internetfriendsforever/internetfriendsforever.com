@@ -4,8 +4,13 @@ const { localize } = require('../i18n')
 
 const css = {
   container: styles.add(`
+    background-size: 100%;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+
     img {
       display: block;
+      image-rendering: auto;
     }
   `)
 }
@@ -51,7 +56,7 @@ module.exports = item => {
   const defaultSrc = getImageUrl(defaultFormat.size)
 
   return `
-    <picture class="${css.container} image">
+    <picture class="${css.container} image" style="background-image: url(${lqip})">
       ${Array(3).fill().flatMap((_, i) => {
         const scale = 3 - i
 
@@ -73,7 +78,6 @@ module.exports = item => {
         width="${defaultFormat.size.width}"
         height="${defaultFormat.size.height}"
         alt="${description.replace(/"/g, '&quot;')}"
-        style="background-image: url(${lqip})"
         loading="lazy"
       >
 
