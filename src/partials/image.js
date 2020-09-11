@@ -56,7 +56,7 @@ module.exports = item => {
   const defaultSrc = getImageUrl(defaultFormat.size)
 
   return `
-    <picture class="${css.container} image" style="background-image: url(${lqip})">
+    <picture class="${css.container}" style="background-image: url(${lqip})">
       ${Array(3).fill().flatMap((_, i) => {
         const scale = 3 - i
 

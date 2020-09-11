@@ -33,7 +33,6 @@ module.exports = ({
           font-size: 14px;
           line-height: 1.3;
           font-family: sans-serif;
-          color: #a8a8a8;
         }
 
         figure {
@@ -42,13 +41,10 @@ module.exports = ({
 
         a {
           text-decoration: none;
-          color: hsla(133, 73%, 38%, 1);
         }
+
         a:hover {
-          color: hsla(133, 73%, 45%, 1);
-        }
-        a:active {
-          color: hsla(133, 80%, 30%, 1);
+          text-decoration: underline;
         }
       </style>
     </head>

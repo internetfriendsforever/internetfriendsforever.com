@@ -2,7 +2,7 @@ const styles = require('@cyberspace/styles')
 const html = require('../html')
 const sanity = require('../sanity')
 const { localize } = require('../i18n')
-const projectItem = require('../partials/projectItem')
+const project = require('../partials/project')
 
 const css = {
   index: styles.add(`
@@ -25,10 +25,6 @@ const css = {
       font-size: 1em;
       margin: 0;
       display: inline;
-    }
-
-    a {
-      color: dimgray;
     }
 
     &[open] {
@@ -72,7 +68,6 @@ const css = {
 
         > ul {
           display: flex;
-          order: 0;
           flex-basis: 25%;
           flex-grow: 1;
           flex-shrink: 0;
@@ -82,18 +77,11 @@ const css = {
               position: relative;
               display: block;
               flex: 1;
-              // min-width: 0.6rem;
-              // height: 0.6rem;
-              // font-size: 0.65em;
-              // line-height: 0.7rem;
               text-align: center;
               vertical-align: top;
               color: transparent;
               z-index: 1;
               background: gray;
-              // border: 1px solid;
-              // border-radius: 50%;
-              // margin-right: 0.05em;
 
 
               :hover,
@@ -198,17 +186,15 @@ module.exports = async () => {
                   <a href="#${slug}">
                     ${localize(item.project.title)}
                   </a>
-                  ${documentation.length ? `
-                    <ul>
-                      ${documentation.map((item, i) => `
-                        <li>
-                          <a href="#${slug}-${i}">
-                            ${i}
-                          </a>
-                        </li>
-                      `).join('')}
-                    </ul>
-                  ` : ''}
+                  <ul>
+                    ${documentation.map((item, i) => `
+                      <li>
+                        <a href="#${slug}-${i}">
+                          ${i}
+                        </a>
+                      </li>
+                    `).join('')}
+                  </ul>
                 </li>
               `
             }).join('')}
@@ -220,7 +206,7 @@ module.exports = async () => {
         </footer>
       </details>
 
-      ${items.map(projectItem).join('')}
+      ${items.map(project).join('')}
     `
   })
 }
