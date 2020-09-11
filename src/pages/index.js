@@ -17,29 +17,23 @@ const css = {
     summary {
       cursor: pointer;
       padding: 0.75rem;
-      color: hsla(133, 73%, 45%, 1);
       outline-color: inherit;
+      width: min-content;
+      white-space: nowrap;
     }
 
     h1 {
       font-size: 1em;
+      font-weight: normal;
       margin: 0;
-      display: inline;
+      display: inline-block;
+      transform: translate(-0.25em, 0);
     }
 
     &[open] {
       min-height: 100vh;
       background: linear-gradient(90deg, #f8f7f8, #f8f7f8, rgba(255,255,255,0.0), rgba(255,255,255,0.0), rgba(255,255,255,0.0));
       background-size: 200% 100%;
-
-      h1 {
-        ::after {
-          content: '✕';
-          float: right;
-          display: inline-block;
-          padding-right: 0.75rem;
-        }
-      }
     }
 
     nav, footer {
@@ -77,18 +71,12 @@ const css = {
               position: relative;
               display: block;
               flex: 1;
-              text-align: center;
-              vertical-align: top;
-              color: transparent;
-              z-index: 1;
-              background: gray;
-
+              background: currentColor;
+              opacity: 0.25;
 
               :hover,
               &.in-viewport {
-                background: hsla(133, 73%, 45%, 1);
-                color: transparent;
-                border-color: transparent;
+                opacity: 1;
               }
             }
           }
