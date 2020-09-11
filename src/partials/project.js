@@ -22,19 +22,15 @@ const css = {
     position: sticky;
     left: 0;
     width: 100vw;
-    padding: 0 0.25rem;
+    padding: 0 0.75rem;
     box-sizing: border-box;
     line-height: 1.2;
+    max-width: 40em;
 
-    @media (min-width: 40em) {
-      display: flex;
-      flex-wrap: wrap;
-
-      > div {
-        flex: 1;
-        width: 50%;
-        max-width: 36em;
-      }
+    h2 {
+      margin: 1rem 0 0 0;
+      font-size: 1em;
+      font-weight: normal;
     }
   `),
 
@@ -67,7 +63,7 @@ const css = {
       font-size: 0.75em;
       flex: 0;
       width: min-content;
-      min-width: 7rem;
+      min-width: 8rem;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
@@ -82,7 +78,7 @@ const css = {
             display: block;
             font-size: 0.7em;
             vertical-align: middle;
-            content: '◀ ';
+            content: '←';
             margin-bottom: 0.3rem;
           }
         }
@@ -128,27 +124,7 @@ const css = {
     li {
       display: inline-block;
       margin-right: 0.75em;
-
-      b {
-        font-weight: normal;
-        color: gray;
-      }
     }
-  `),
-
-  us: styles.add(`
-    padding: 0 0.5rem;
-
-    h2 {
-      margin: 1rem 0 0 0;
-      font-size: 1em;
-      font-weight: normal;
-      color: dimgray;
-    }
-  `),
-
-  them: styles.add(`
-    padding: 0 0.5rem;
   `)
 }
 
@@ -194,41 +170,35 @@ module.exports = ({ project }) => {
   return `
     <section id="${slug}" class="${css.container}">
       <div class="${css.description}">
-        <div class="${css.us}">
-          <h2>
-            ${localize(title)}
-          </h2>
+        <h2>
+          ${localize(title)}
+        </h2>
 
-          ${roles.length ? `
-            <ul class="roles ${css.roles}" title="${localize('Roles')}">
-              ${roles.map(role => `
-                <li>${localize(role.name)}</li>
-              `).join('')}
-            </ul>
-          ` : ''}
+        ${roles.length ? `
+          <ul class="roles ${css.roles}" title="${localize('Roles')}">
+            ${roles.map(role => `
+              <li>${localize(role.name)}</li>
+            `).join('')}
+          </ul>
+        ` : ''}
 
-          ${dateString ? `
-            <div>
-              ${dateString}
-            </div>
-          ` : ''}
-        </div>
+        ${dateString ? `
+          <div>
+            ${dateString}
+          </div>
+        ` : ''}
 
         ${relationsByRole.length ? `
-          <div class="${css.them}">
-            <ul class="${css.relations}" title="${localize('Relations')}">
-              ${relationsByRole.map(role => `
-                ${roles.length ? `
-                  <li>
-                    ${localize(role.name)}
-                    <b>
-                      ${role.relations.map(renderRelation).join(', ')}
-                    </b>
-                  </li>
-                ` : ''}
-              `).join('')}
-            </ul>
-          </div>
+          <ul class="${css.relations}" title="${localize('Relations')}">
+            ${relationsByRole.map(role => `
+              ${roles.length ? `
+                <li>
+                  ${localize(role.name)}
+                  ${role.relations.map(renderRelation).join(', ')}
+                </li>
+              ` : ''}
+            `).join('')}
+          </ul>
         ` : ''}
       </div>
 

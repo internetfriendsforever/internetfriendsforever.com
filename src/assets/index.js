@@ -40,11 +40,11 @@ Array.from(figures).forEach(figure => {
 })
 
 // Remove thumbnail images
-const images = document.querySelectorAll('figure img')
+const pictures = document.querySelectorAll('figure picture')
 
-Array.from(images).forEach(image => {
-  image.addEventListener('load', () => {
-    image.removeAttribute('style')
+Array.from(pictures).forEach(picture => {
+  picture.querySelector('img').addEventListener('load', () => {
+    picture.removeAttribute('style')
   })
 })
 
