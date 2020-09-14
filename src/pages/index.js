@@ -12,6 +12,8 @@ const css = {
     z-index: 10;
     width: max-content;
     max-width: 100vw;
+    max-height: 100vh;
+    overflow: auto;
     margin: 0rem;
 
     summary {
@@ -32,8 +34,7 @@ const css = {
 
     &[open] {
       min-height: 100vh;
-      background: linear-gradient(90deg, #f8f7f8, #f8f7f8, rgba(255,255,255,0.0), rgba(255,255,255,0.0), rgba(255,255,255,0.0));
-      background-size: 200% 100%;
+      background: linear-gradient(90deg, #f8f7f8 50%, rgba(255,255,255,0.0) 100%);
     }
 
     nav, footer {
