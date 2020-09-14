@@ -40,6 +40,10 @@ const css = {
       padding: 0.75rem;
     }
 
+    footer {
+      max-width: 36em;
+    }
+
     ul {
       padding: 0;
       list-style: none;
