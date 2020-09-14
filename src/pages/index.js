@@ -11,17 +11,16 @@ const css = {
     left: 0;
     z-index: 10;
     width: max-content;
-    max-width: 100vw;
+    max-width: 85vw;
     max-height: 100vh;
-    overflow: auto;
     margin: 0rem;
 
     summary {
       cursor: pointer;
       padding: 0.75rem;
       outline-color: inherit;
-      width: min-content;
       white-space: nowrap;
+      color: blue;
     }
 
     h1 {
@@ -29,20 +28,42 @@ const css = {
       font-weight: normal;
       margin: 0;
       display: inline-block;
-      transform: translate(-0.25em, 0);
+      width: 100%;
     }
 
     &[open] {
       min-height: 100vh;
-      background: linear-gradient(90deg, #f8f7f8 50%, rgba(255,255,255,0.0) 100%);
+      background: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      overflow: auto;
+      padding-right: 2rem;
+
+      summary {
+        ::before {
+          content: '✕';
+          display: inline-block;
+          position: absolute;
+          top: 0;
+          right: 0;
+          padding: 0.8rem 1rem;
+        }
+      }
     }
 
-    nav, footer {
-      padding: 0.75rem;
-    }
-
+    nav,
+    article,
     footer {
-      max-width: 36em;
+      padding: 0 0.75rem;
+      margin: 2.5rem 0;
+    }
+
+    nav {
+      margin-top: 1.5rem;
+    }
+
+    footer,
+    article {
+      max-width: 33em;
     }
 
     ul {
@@ -155,6 +176,12 @@ module.exports = async () => {
     }[0]
   `)
 
+  const about = await sanity.client.fetch(`
+    *[_id == "7990f0a2-63e3-4c5c-bb67-f366837d36cc"]{ body }[0]
+  `)
+
+  const aboutHTML = sanity.html(about.body)
+
   const { items } = catalogue
 
   return html({
@@ -163,6 +190,7 @@ module.exports = async () => {
     content: `
       <details class="${css.index}">
         <summary><h1>internetfriendsforever</h1></summary>
+
         <nav>
           <ul>
             ${items.map(item => {
@@ -193,6 +221,10 @@ module.exports = async () => {
             }).join('')}
           </ul>
         </nav>
+
+        <article>
+          ${aboutHTML}
+        </article>
 
         <footer>
           ${sanity.html(catalogue.colophon)}
