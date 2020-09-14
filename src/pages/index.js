@@ -1,3 +1,4 @@
+const blocksToHTML = require('@sanity/block-content-to-html')
 const styles = require('@cyberspace/styles')
 const html = require('../html')
 const sanity = require('../sanity')
@@ -226,7 +227,20 @@ module.exports = async () => {
         </article>
 
         <footer>
-          ${sanity.html(catalogue.colophon)}
+          ${sanity.html(catalogue.colophon, {
+            serializers: {
+              marks: {
+                location: props => {
+                  const { lat, lng } = props.mark
+                  return blocksToHTML.h('a', {
+                    href: `https://www.openstreetmap.org/#map=14/${lat}/${lng}`,
+                    target: '_blank',
+                    rel: 'noopener'
+                  }, props.children)
+                }
+              }
+            }
+          })}
         </footer>
       </details>
 

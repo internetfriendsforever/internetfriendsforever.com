@@ -11,7 +11,9 @@ const client = sanityClient({
 
 const image = source => imageUrlBuilder(client).image(source)
 
-const html = blocks => blocksToHtml({ blocks: blocks })
+const html = (blocks, props) => {
+  return blocksToHtml({ blocks, ...props })
+}
 
 module.exports = {
   client,
