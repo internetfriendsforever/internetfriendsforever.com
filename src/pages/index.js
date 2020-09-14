@@ -28,7 +28,6 @@ const css = {
       font-weight: normal;
       margin: 0;
       display: inline-block;
-      width: 100%;
     }
 
     &[open] {
