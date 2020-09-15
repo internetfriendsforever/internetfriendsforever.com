@@ -1,18 +1,33 @@
 // Scroll to _center_ of item on click
-Array.from(document.querySelectorAll('nav ul li ul a')).forEach(link => {
+const index = document.getElementById('index')
+
+function navigateTo (link, centerX, centerY) {
+  const target = document.getElementById(link.getAttribute('href').substring(1))
+  const { offsetLeft, offsetTop, offsetWidth, offsetHeight } = target
+
+  window.scrollTo(
+    centerX ? ((offsetLeft + offsetWidth / 2) - window.innerWidth / 2) : 0,
+    centerY ? ((offsetTop + offsetHeight / 2) - window.innerHeight / 2) : 0
+  )
+
+  window.history.pushState(null, null, link.href)
+
+  index.removeAttribute('open')
+}
+
+// Scroll to left center of project links
+Array.from(index.querySelectorAll('nav > ul > li > a')).forEach(link => {
   link.addEventListener('click', event => {
     event.preventDefault()
+    navigateTo(link, false, true)
+  })
+})
 
-    const target = document.getElementById(link.getAttribute('href').substring(1))
-
-    const { offsetLeft, offsetTop, offsetWidth, offsetHeight } = target
-
-    window.scrollTo(
-      (offsetLeft + offsetWidth / 2) - window.innerWidth / 2,
-      (offsetTop + offsetHeight / 2) - window.innerHeight / 2
-    )
-
-    window.history.pushState(null, null, link.href)
+// Scroll to center center of slide links
+Array.from(index.querySelectorAll('nav > ul > li > ul > li > a')).forEach(link => {
+  link.addEventListener('click', event => {
+    event.preventDefault()
+    navigateTo(link, true, true)
   })
 })
 

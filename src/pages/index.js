@@ -188,7 +188,7 @@ module.exports = async () => {
     title: 'internetfriendsforever — design · research · communication',
     description: 'Daniel and Seb working today for your better tomorrow',
     content: `
-      <details class="${css.index}">
+      <details class="${css.index}" id="index">
         <summary><h1>internetfriendsforever</h1></summary>
 
         <nav>
