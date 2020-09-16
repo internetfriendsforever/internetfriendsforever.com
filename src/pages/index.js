@@ -36,7 +36,6 @@ const css = {
       background: white;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
       overflow: auto;
-      padding-right: 2rem;
 
       summary {
         ::before {
@@ -53,7 +52,7 @@ const css = {
     nav,
     article,
     footer {
-      padding: 0 0.75rem;
+      padding: 0 3rem 0 0.75rem;
       margin: 2.5rem 0;
     }
 
