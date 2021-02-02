@@ -25,10 +25,13 @@ const css = {
     }
 
     h1 {
-      font-size: 1em;
       font-weight: normal;
       margin: 0;
       display: inline-block;
+    }
+
+    h2 {
+      font-size: 1em;
     }
 
     &[open] {
@@ -179,7 +182,12 @@ module.exports = async () => {
     *[_id == "7990f0a2-63e3-4c5c-bb67-f366837d36cc"]{ body }[0]
   `)
 
+  const privacy = await sanity.client.fetch(`
+    *[_id == "privacy"]{ body }[0]
+  `)
+
   const aboutHTML = sanity.html(about.body)
+  const privacyHTML = sanity.html(privacy.body)
 
   const { items } = catalogue
 
@@ -188,7 +196,7 @@ module.exports = async () => {
     description: 'Daniel and Seb working today for your better tomorrow',
     content: `
       <details class="${css.index}" id="index">
-        <summary><h1>internetfriendsforever</h1></summary>
+        <summary><span>internetfriendsforever</span></summary>
 
         <nav>
           <ul>
@@ -241,6 +249,14 @@ module.exports = async () => {
             }
           })}
         </footer>
+
+        <details>
+          <summary>Personvererklæring</summary>
+
+          <article>
+            ${privacyHTML}
+          </article>
+        </details>
       </details>
 
       ${items.map(project).join('')}
