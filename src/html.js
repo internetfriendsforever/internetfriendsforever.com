@@ -19,6 +19,7 @@ module.exports = ({
       <meta property="og:image" content="https://internetfriendsforever.com/assets/favicon.jpg" />
       <meta property="og:image:width" content="1024" />
       <meta property="og:image:height" content="1024" />
+      <script async defer data-domain="internetfriendsforever.com" src="https://plausible.io/js/plausible.js"></script>
       <link rel="stylesheet" type="text/css" href="styles.css" />
       <style>
         html {
