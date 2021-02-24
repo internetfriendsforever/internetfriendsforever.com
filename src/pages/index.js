@@ -6,6 +6,9 @@ const { localize } = require('../i18n')
 const project = require('../partials/project')
 
 const css = {
+  privacy: styles.add(`
+    margin-bottom: 1em;
+  `),
   index: styles.add(`
     position: fixed;
     top: 0;
@@ -250,7 +253,7 @@ module.exports = async () => {
           })}
         </footer>
 
-        <details>
+        <details class="${css.privacy}">
           <summary>Personvererklæring</summary>
 
           <article>
